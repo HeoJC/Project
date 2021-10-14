@@ -16,6 +16,8 @@
 		 url('../fonts/leckerlione/leckerlione-regular-webfont.svg#leckerli_oneregular') format('svg');
 }
 
+/*****************************************************************************************************/
+/*김범수 10/14 16:00*/
 #leftiFrameDiv{
 	display: inline;
 	padding: 1%;
@@ -31,6 +33,7 @@
 #rightiFrame{
 	background-color: '';
 }
+/*******************************************************************************************************/
 body {
 	background: #fff;
 	font-family: Arial, Helvetica, sans-serif;
