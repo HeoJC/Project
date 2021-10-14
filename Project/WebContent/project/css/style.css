@@ -18,20 +18,46 @@
 
 /*****************************************************************************************************/
 /*김범수 10/14 16:00*/
+#userInfo{
+	text-align: right;
+	position: relative; bottom: 30px;
+}
+#userInfo>a{
+	margin-left: 20px;
+	text-decoration: none;
+	color: black;
+	
+}
 #leftiFrameDiv{
 	display: inline;
 	padding: 1%;
+	display: '';
 }
 
 #rightiFrameDiv{
 	display: inline;
 	padding: 1%;
+	display: '';
 }
 #leftiFrame{
-	background-color: '';
+	background-color: rgb(37, 37, 37);
+	border-radius: 30px;
+	
 }
 #rightiFrame{
 	background-color: '';
+}
+#regForm>input{
+	border: 2px solid #252525;
+	color: #252525;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 15px;
+	font-weight: normal;
+	margin: 0 0 37px;
+	padding: 20px 10px;
+	text-align: center;
+	text-transform: uppercase;
+	width: 200px;
 }
 /*******************************************************************************************************/
 body {
