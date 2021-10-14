@@ -16,6 +16,24 @@
 		 url('../fonts/leckerlione/leckerlione-regular-webfont.svg#leckerli_oneregular') format('svg');
 }
 
+#leftiFrameDiv{
+	display: inline;
+	padding: 1%;
+}
+
+#rightiFrameDiv{
+	display: inline;
+	padding: 1%;
+}
+#leftiFrame{
+	/* background-color: bisque; */
+}
+#rightiFrame{
+	/* background-color: cadetblue; */
+}
+#body>:nth-child(2){
+	margin: 1%;
+}
 body {
 	background: #fff;
 	font-family: Arial, Helvetica, sans-serif;
@@ -26,6 +44,7 @@ body {
 	min-width: 960px;
 	padding: 0;
 }
+
 p {
 	color: #252525;
 	line-height: 24px;
