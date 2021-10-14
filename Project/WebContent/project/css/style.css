@@ -26,13 +26,10 @@
 	padding: 1%;
 }
 #leftiFrame{
-	/* background-color: bisque; */
+	background-color: '';
 }
 #rightiFrame{
-	/* background-color: cadetblue; */
-}
-#body>:nth-child(2){
-	margin: 1%;
+	background-color: '';
 }
 body {
 	background: #fff;
