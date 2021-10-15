@@ -3,6 +3,8 @@ package com.mustacchio.briiiqtt;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -30,12 +32,14 @@ public class LoginServlet extends HttpServlet {
 		MemberDAO dao = new MemberDAO();
 		Member loggedIn = dao.login(memberID,memberPW);
 		
+		ServletContext context = getServletContext();
+		RequestDispatcher dispatcher = context.getRequestDispatcher("/project/gallery.jsp");
 		if (loggedIn == null) {
-			out.println("ㅋㅋㄹㅃㅃ");
-			System.out.println("ㅋㅋㄹㅃㅃ");
+			 request.setAttribute("loginRequest", "logInError");
+			 dispatcher.forward(request, response);
 		} else {
-			out.println(loggedIn.getMemberName() + "님 방가방가 하이루~^^");
-			System.out.println("ㅎㅇ");
+			request.setAttribute("loginRequest", "loggedIn");
+			dispatcher.forward(request, response);
 		}
 
 	}

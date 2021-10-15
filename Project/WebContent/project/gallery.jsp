@@ -9,66 +9,19 @@
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link rel="stylesheet" type="text/css" href="css/mobile.css" media="screen and (max-width : 568px)">
 	<script type="text/javascript" src="js/mobile.js"></script>
+	<script src="js/top_bar.js"></script>
 </head>
-
+<%
+	String loginRequest = (String)request.getAttribute("loginRequest");
+	System.out.println(loginRequest);
+%>
 <script>
+var l = '<%=loginRequest%>';
 	window.onload = function () {
-
-		// << createElement
-		let a;
-		// >>
-
-		// << getElement
-		let userInfoLinks = document.getElementsByClassName('userInfoLinks');
-		let userInfo = document.getElementById('userInfo');
-		// >>
-
-		// 맨윗줄메뉴
-		if (true) { // if(로그인){}
-
-			// << 홍길동님
-			a = document.createElement('a');
-			a.setAttribute('class', 'userInfoLinks');
-			a.setAttribute('href', '' /*개인정보페이지*/ );
-			let userName = '홍길동' //DB쿼리
-			a.innerHTML = userName + ' 님'
-			userInfo.appendChild(a);
-			// >>
-
-			// << 장바구니
-			a = document.createElement('a');
-			a.setAttribute('class', 'userInfoLinks');
-			a.setAttribute('href', '' /*개인정보페이지*/ );
-			a.innerHTML = '장바구니'
-			userInfo.appendChild(a);
-			// >>
-
-			// << 로그아웃
-			a = document.createElement('a');
-			a.setAttribute('class', 'userInfoLinks');
-			a.setAttribute('href', '' /*개인정보페이지*/ );
-			a.innerHTML = '로그아웃'
-			a.onclick = function () {
-				alert('로그아웃 되었습니다.')
-			}
-			userInfo.appendChild(a);
-			// >>
-		} else {
-
-		}
-
-		// << 마우스오버 밑줄 함수
-		for (let i = 0; i < userInfoLinks.length; i++) {
-			userInfoLinks[i].onmouseover = function () {
-				this.setAttribute('style', 'text-decoration: underline;')
-			}
-			userInfoLinks[i].onmouseout = function () {
-				this.setAttribute('style', 'text-decoration: none;')
-			}
-		}
-		// >>
+		console.log(l);
 	}
 </script>
+
 
 <body>
 	<div id="header">

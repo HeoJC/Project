@@ -5,24 +5,22 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Register - Mustache Enthusiast</title>
+	<title>Login - Mustache Enthusiast</title>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link rel="stylesheet" type="text/css" href="css/mobile.css" media="screen and (max-width : 568px)">
 	<script type="text/javascript" src="js/mobile.js"></script>
 	<script src="js/top_bar.js"></script>
+	<script src="js/resetInput.js"></script>
+	<script src=""></script>
 </head>
-
+<%
+	String loginRequest = (String)request.getAttribute("loginRequest");
+	System.out.println(loginRequest);
+%>
 <script>
+var l = '<%=loginRequest%>';
 	window.onload = function () {
-
-		// << 입력창 클릭시 value = null;
-		let inputs = document.getElementsByTagName('input')
-		for (let i = 0; i < inputs.length; i++) {
-			inputs[i].onclick = function(){
-				inputs[i].setAttribute('value','');
-			}
-		}
-		// >>
+		console.log(l);
 	}
 </script>
 
@@ -34,13 +32,11 @@
 		</a>
 	</div>
 	<div id="body">
-		<h1><span>welcome!</span></h1>
-		<form action="../RegisterServlet" id="regForm" method="get">
+		<h1><span>who are they?</span></h1>
+		<form action="../LoginServlet" id="loginForm" method="get">
 			<input type="text" name="memberID" id="memberID" value="id">
 			<input type="password" name="memberPW" id="memberPW" value="password">
-			<input type="text" name="memberName" id="memberName" value="name">
-			<input type="text" name="memberEMail" id="memberEMail" value="email">
-			<input type="submit" name="register" id="send" value="register">
+			<input type="submit" name="login" id="send" value="log-in">
 		</form>
 	</div>
 	<div id="footer">
