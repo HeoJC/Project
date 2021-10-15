@@ -5,48 +5,22 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Contact - Mustache Enthusiast</title>
+	<title>Login - Mustache Enthusiast</title>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link rel="stylesheet" type="text/css" href="css/mobile.css" media="screen and (max-width : 568px)">
 	<script type="text/javascript" src="js/mobile.js"></script>
+	<script src="js/top_bar.js"></script>
+	<script src="js/resetInput.js"></script>
+	<script src=""></script>
 </head>
 
-<script>
-	window.onload = function () {
-
-		// << 입력창 클릭시 value = null;
-		let inputs = document.getElementsByTagName('input')
-		for (let i = 0; i < inputs.length; i++) {
-			inputs[i].onclick = function(){
-				inputs[i].setAttribute('value','');
-			}
-		}
-		// >>
-	}
 </script>
-
 <body>
 	<div id="header">
+		<div id="userInfo"></div>
 		<a href="index.html" class="logo">
 			<img src="images/logo.jpg" alt="">
 		</a>
-		<ul id="navigation">
-			<li>
-				<a href="index.html">home</a>
-			</li>
-			<li>
-				<a href="about.html">about</a>
-			</li>
-			<li>
-				<a href="gallery.html">gallery</a>
-			</li>
-			<li>
-				<a href="blog.html">blog</a>
-			</li>
-			<li class="selected">
-				<a href="contact.html">contact</a>
-			</li>
-		</ul>
 	</div>
 	<div id="body">
 		<h1><span>who are you?</span></h1>
