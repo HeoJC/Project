@@ -1,6 +1,7 @@
 <!doctype html>
 <!-- Website Template by freewebsitetemplates.com -->
 <html>
+
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,6 +10,69 @@
 	<link rel="stylesheet" type="text/css" href="css/mobile.css" media="screen and (max-width : 568px)">
 	<script type="text/javascript" src="js/mobile.js"></script>
 </head>
+<script>
+	window.onload = function () {
+
+		// << createElement
+		let a;
+		// >>
+
+		// << getElement
+		let userInfoLinks = document.getElementsByClassName('userInfoLinks');
+		let leftiFrameDiv = document.getElementById('leftiFrameDiv');
+		let rightiFrameDiv = document.getElementById('rightiFrameDiv');
+		let leftiFrame = document.getElementById('leftiFrame');
+		let rightiFrame = document.getElementById('rightiFrame');
+		let userInfo = document.getElementById('userInfo');
+		// >>
+
+		// 맨윗줄메뉴
+		if (true) { // if(로그인){}
+
+			// << 홍길동님
+			a = document.createElement('a');
+			a.setAttribute('class', 'userInfoLinks');
+			a.setAttribute('href', '' /*개인정보페이지*/ );
+			let userName = '홍길동' //DB쿼리
+			a.innerHTML = userName + ' 님'
+			userInfo.appendChild(a);
+			// >>
+
+			// << 장바구니
+			a = document.createElement('a');
+			a.setAttribute('class', 'userInfoLinks');
+			a.setAttribute('href', '' /*개인정보페이지*/ );
+			a.innerHTML = '장바구니'
+			userInfo.appendChild(a);
+			// >>
+
+			// << 로그아웃
+			a = document.createElement('a');
+			a.setAttribute('class', 'userInfoLinks');
+			a.setAttribute('href', '' /*개인정보페이지*/ );
+			a.innerHTML = '로그아웃'
+			a.onclick = function () {
+				alert('로그아웃 되었습니다.')
+			}
+			userInfo.appendChild(a);
+			// >>
+		} else {
+
+		}
+
+		// << 마우스오버 밑줄 함수
+		for (let i = 0; i < userInfoLinks.length; i++) {
+			userInfoLinks[i].onmouseover = function () {
+				this.setAttribute('style', 'text-decoration: underline;')
+			}
+			userInfoLinks[i].onmouseout = function () {
+				this.setAttribute('style', 'text-decoration: none;')
+			}
+		}
+		// >>
+	}
+</script>
+
 <body>
 	<div id="header">
 		<a href="index.html" class="logo">
@@ -16,16 +80,7 @@
 		</a>
 		<ul id="navigation">
 			<li>
-				<a href="index.html">home</a>
-			</li>
-			<li>
-				<a href="about.html">about</a>
-			</li>
-			<li>
 				<a href="gallery.html">gallery</a>
-			</li>
-			<li>
-				<a href="blog.html">blog</a>
 			</li>
 			<li class="selected">
 				<a href="contact.html">contact</a>
@@ -39,7 +94,8 @@
 			<input type="text" name="address" id="address" value="경기도 성남시 분당수 분당내곡로 117, 8층">
 			<input type="text" name="regNum" id="regNum" value="사업자등록번호 : 570-88-01618">
 			<input type="text" name="phone" id="phone" value="고객센터 1588-7813">
-			<textarea name="message" id="message">mustacchino는 통신판매 중개자로서 통신판매의 당사자가 아니므로 개별 판매자가 등록한 상품정보에 대하여 책임을 지지 않습니다. 단, 거래과정에서 검수하고 보증하는 내용에 대한 책임은 당사에 있습니다.</textarea>
+			<textarea name="message"
+				id="message">mustacchino는 통신판매 중개자로서 통신판매의 당사자가 아니므로 개별 판매자가 등록한 상품정보에 대하여 책임을 지지 않습니다. 단, 거래과정에서 검수하고 보증하는 내용에 대한 책임은 당사에 있습니다.</textarea>
 			<input type="submit" name="send" id="send" value="send">
 		</form>
 	</div>
@@ -63,4 +119,5 @@
 		</div>
 	</div>
 </body>
+
 </html>
