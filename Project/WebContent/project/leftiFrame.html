@@ -88,7 +88,7 @@
             div.appendChild(img);
             // div.setAttribute('onclick', "parent.rightiFrame.location.href='grey.html'");
             div.onclick = function () {
-                // parent.document.getElementById('rightiFrame').setAttribute('style','background-color:red');
+                parent.document.getElementById('rightiFrame').setAttribute('style','background-color:red');
                 parent.document.location.href = "gallery.html?hi=0/bye=1"
             }
             //<< 가격이랑 좋아요부분
@@ -97,8 +97,8 @@
             div.appendChild(innerDiv);
 
             let span = document.createElement('span');
-            let price = 10; // 가격
-            span.innerHTML = "$" + price;
+            let price = "78,000"; // 가격
+            span.innerHTML = "₩" + price;
             innerDiv.appendChild(span);
 
             span = document.createElement('span');

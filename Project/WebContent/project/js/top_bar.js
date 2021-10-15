@@ -4,7 +4,7 @@ window.onload = function () {
 	let a;
 	let userInfoLinks = document.getElementsByClassName('userInfoLinks');
 	let userInfo = document.getElementById('userInfo');
-	if (false) { // if(로그인){}
+	if (true) { // if(로그인){}
 
 		// << 홍길동님
 		a = document.createElement('a');
