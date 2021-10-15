@@ -7,7 +7,9 @@ public class Product {
 	private int originprice ;
 	private int offprice ;
 	private int likeit ;
+	private String filename ;
 	
+
 	public String getId() {
 		return id;
 	}
@@ -26,22 +28,28 @@ public class Product {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public int getOriginPrice() {
+	public int getOriginprice() {
 		return originprice;
 	}
-	public void setOriginPrice(int originprice) {
+	public void setOriginprice(int originprice) {
 		this.originprice = originprice;
 	}
-	public int getOffPrice() {
+	public int getOffprice() {
 		return offprice;
 	}
-	public void setOffPrice(int offprice) {
+	public void setOffprice(int offprice) {
 		this.offprice = offprice;
 	}
-	public int getLikeIt() {
+	public int getLikeit() {
 		return likeit;
 	}
-	public void setLikeIt(int likeit) {
+	public void setLikeit(int likeit) {
 		this.likeit = likeit;
+	}
+	public String getFilename() {
+		return filename;
+	}
+	public void setFilename(String filename) {
+		this.filename = filename;
 	}
 }

@@ -43,7 +43,7 @@ public class cartServlet extends HttpServlet {
 			cart.setName(name) ;
 			cart.setCount(Integer.parseInt(count)) ;
 			cart.setPrice(Integer.parseInt(price)) ;
-			cart.setDeliveryFee(Integer.parseInt(delivery)) ;
+			cart.setDeliveryfee(Integer.parseInt(delivery)) ;
 			
 			dao.insertCart(cart) ;
 			

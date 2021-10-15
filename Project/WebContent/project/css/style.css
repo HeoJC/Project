@@ -173,6 +173,16 @@ p a:hover {
 	margin: 0;
 	padding: 0;
 }
+#body > div .article h4#like {
+	background: #000000;
+	color: #ff0000;
+	display: inline-block;
+	font-family: "Arial Black", Gadget, sans-serif;
+	font-size: 25px;
+	font-weight: normal;
+	margin: 0 0 30px;
+	padding: 8px 27px 10px;
+}
 #body > div .article h4 {
 	background: #252525;
 	color: #fff;

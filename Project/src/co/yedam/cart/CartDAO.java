@@ -22,7 +22,7 @@ public class CartDAO extends DAO{
 				cart.setName(rs.getString("name")) ;
 				cart.setCount(rs.getInt("count")) ;
 				cart.setPrice(rs.getInt("price")) ;
-				cart.setDeliveryFee(rs.getInt("deliveryfee")) ;
+				cart.setDeliveryfee(rs.getInt("deliveryfee")) ;
 				list.add(cart) ;
 			}
 		} catch (SQLException e) {
@@ -54,7 +54,7 @@ public class CartDAO extends DAO{
 			pstmt.setString(2, cart.getName()) ;
 			pstmt.setInt(3, cart.getCount()) ;
 			pstmt.setInt(4, cart.getPrice()) ;
-			pstmt.setInt(5, cart.getDeliveryFee()) ;
+			pstmt.setInt(5, cart.getDeliveryfee()) ;
 			int r = pstmt.executeUpdate() ;
 			System.out.println(r + "건 입력") ;
 			

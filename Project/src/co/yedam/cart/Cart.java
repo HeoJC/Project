@@ -6,7 +6,9 @@ public class Cart {
 	private int count ;
 	private int price ;
 	private int deliveryfee ;
+	private String filename ;
 	
+
 	public String getId() {
 		return id;
 	}
@@ -31,10 +33,16 @@ public class Cart {
 	public void setPrice(int price) {
 		this.price = price;
 	}
-	public int getDeliveryFee() {
+	public int getDeliveryfee() {
 		return deliveryfee;
 	}
-	public void setDeliveryFee(int deliveryfee) {
+	public void setDeliveryfee(int deliveryfee) {
 		this.deliveryfee = deliveryfee;
+	}
+	public String getFilename() {
+		return filename;
+	}
+	public void setFilename(String filename) {
+		this.filename = filename;
 	}
 }

@@ -24,9 +24,10 @@ public class ProductDAO extends DAO{
 				product.setId(rs.getString("id")) ;
 				product.setBrand(rs.getString("brand")) ;
 				product.setName(rs.getString("name")) ;
-				product.setOriginPrice(rs.getInt("originprice")) ;
-				product.setOffPrice(rs.getInt("offprice")) ;
-				product.setLikeIt(rs.getInt("likeit")) ;
+				product.setOriginprice(rs.getInt("originprice")) ;
+				product.setOffprice(rs.getInt("offprice")) ;
+				product.setLikeit(rs.getInt("likeit")) ;
+				product.setFilename(rs.getString("filename")) ;
 				list.add(product) ;
 			}
 		} catch (SQLException e) {

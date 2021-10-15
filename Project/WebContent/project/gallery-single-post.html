@@ -39,27 +39,35 @@
 	</div>
 
 	<script>
-		// $.ajax({
-		// 	url : "../productServlet" ,
-		// 	type : "get" ,
-		// 	dataType : "json" ,
-		// 	success : function (result) {
-		// 		console.log(result) ;
-		// 		for (let li of result) {
-		// 			$(".detail").append(createLi(li)) ;
-		// 		}
-		// 	} ,
-		// 	error : function (reject) {
-		// 		console.log(reject) ;
-		// 	}
-		// }) ;
+		$.ajax({
+			url : "../productServlet" ,
+			type : "get" ,
+			dataType : "json" ,
+			success : function (result) {
+				console.log(result) ;
+				for (let row of result) {
+					$("#body").append(createDiv(row)) ;
+				}
+			} ,
+			error : function (reject) {
+				console.log(reject) ;
+			}
+		}) ;
 
-		// function createLi(li) {
-		// 	let ulRow = $("<ul />").addClass("detail") ;
-		// 	$(ulRow).append(
-		// 		$("<li />").html("<img src='../img2/" + li.id )
+		function createDiv(row) {
+			let divRow = $("<div />").addClass("row") ;
+			$(divRow).append(
+				$("<h1 />").append($("<span />").html(row.name)) ,
+				$("<div />").html("<img width='500px' src='../img2/" + row.filename + "'>" ) ,
+				$("<div />").addClass("article").append($("<h4 />").html(row.brand)) ,
+				$("<div />").addClass("article").append($("<h4 style='text-decoration:line-through'/>").html("₩ " + row.originprice)) ,
+				$("<div />").addClass("article").append($("<h4 />").html("₩ " + row.offprice)) ,
+				$("<div />").addClass("article").append($("<h4 id='like'/>").html("♥" + row.likeit)) 
+			) ;
+			
+			return divRow ;
+		}
 
-		// }
 	</script>
 
 </body>

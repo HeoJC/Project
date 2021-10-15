@@ -32,12 +32,12 @@ public class productServlet extends HttpServlet {
 		Gson gson = new GsonBuilder().create() ;
 		
 		cmd = "list" ;
-		if (cmd.equals("list")) {
-			String id = "1" ;
+		if (cmd.equals("list")) { // 혹시 add 추가할까봐 만들어놓은것 . 목록을 보여줄지, 추가를 할지 변수를 받는곳
+			String id = "1" ; // 데이터베이스에서 자료를 불러올 id 를 변수로 받는곳
 			
 			List<Product> list = dao.getProductList(id) ;
 			out.println(gson.toJson(list)) ;
-		}
+		} 
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
