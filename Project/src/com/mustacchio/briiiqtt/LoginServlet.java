@@ -32,13 +32,17 @@ public class LoginServlet extends HttpServlet {
 		MemberDAO dao = new MemberDAO();
 		Member loggedIn = dao.login(memberID,memberPW);
 		
-		ServletContext context = getServletContext();
-		RequestDispatcher dispatcher = context.getRequestDispatcher("/project/login.jsp");
+//		ServletContext context = getServletContext();
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/project/login.jsp");
 		if (loggedIn == null) {
 			 request.setAttribute("loginRequest", "logInError");
 			 dispatcher.forward(request, response);
 		} else {
 			request.setAttribute("loginRequest", "loggedIn");
+			request.setAttribute("sessionID", loggedIn.getMemberID());
+			request.setAttribute("sessionPW", loggedIn.getMemberPW());
+			request.setAttribute("sessionName", loggedIn.getMemberName());
+			request.setAttribute("sessionEMail", loggedIn.getMemberEMail());
 			dispatcher.forward(request, response);
 		}
 

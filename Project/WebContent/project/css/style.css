@@ -63,6 +63,17 @@
 	text-transform: uppercase;
 	width: 200px;
 }
+@font-face {
+	font-family: digital_dismay;
+	src: url(../fonts/Digital\ Dismay.otf);
+}
+#timer{
+	z-index: 1;
+	font-size: 50px;
+	color: #ff0000;
+	font-family: digital_dismay;
+	position: absolute;
+}
 /*******************************************************************************************************/
 body {
 	background: #fff;

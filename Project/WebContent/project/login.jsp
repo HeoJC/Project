@@ -11,17 +11,34 @@
 	<script type="text/javascript" src="js/mobile.js"></script>
 	<script src="js/top_bar.js"></script>
 	<script src="js/resetInput.js"></script>
-	<script src=""></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <%
 	String loginRequest = (String)request.getAttribute("loginRequest");
+	if(){
+		
+	}
+	String sessionID = (String)request.getAttribute("sessionID");
+	String sessionPW = (String)request.getAttribute("sessionPW");
+	String sessionName = (String)request.getAttribute("sessionName");
+	String sessionEMail = (String)request.getAttribute("sessionEMail");
 	System.out.println(loginRequest);
+	
+	session.setAttribute("sessionID", sessionID);
+	session.setAttribute("sessionPW", sessionPW);
+	session.setAttribute("sessionName", sessionName);
+	session.setAttribute("sessionEMail", sessionEMail);
 %>
 <script>
-var l = '<%=loginRequest%>';
-	window.onload = function () {
-		console.log(l);
+let loginRequest = '<%=loginRequest%>';
+$(window).ready(function(){
+	console.log(loginRequest);
+	if(loginRequest=='loggedIn'){
+		
+	} else{
+		
 	}
+})
 </script>
 
 <body>
@@ -32,7 +49,7 @@ var l = '<%=loginRequest%>';
 		</a>
 	</div>
 	<div id="body">
-		<h1><span>who are they?</span></h1>
+		<h1><span>who are you?</span></h1>
 		<form action="../LoginServlet" id="loginForm" method="get">
 			<input type="text" name="memberID" id="memberID" value="id">
 			<input type="password" name="memberPW" id="memberPW" value="password">

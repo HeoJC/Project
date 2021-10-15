@@ -1,6 +1,7 @@
 <!doctype html>
 <!-- Website Template by freewebsitetemplates.com -->
 <html>
+
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,8 +9,12 @@
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link rel="stylesheet" type="text/css" href="css/mobile.css" media="screen and (max-width : 568px)">
 	<script type="text/javascript" src="js/mobile.js"></script>
+	<script src="js/timer.js"></script>
 	<script src="js/top_bar.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
 </head>
+
 <body>
 	<div id="header">
 		<div id="userInfo"></div>
@@ -39,20 +44,20 @@
 		<ul>
 			<li>
 				<a href="gallery.html">
+					<div>timesale -60%</div><div id="timer"></div>
 					<img src="../img/1.png" alt="">
-					<span>for free!</span>
 				</a>
 			</li>
 			<li>
 				<a href="gallery.html">
+					<div>sale -15%</div>
 					<img src="../img/2.jpg" alt="">
-					<span>sale -15%</span>
 				</a>
 			</li>
 			<li>
 				<a href="gallery.html">
+					<div>limited edition</div>
 					<img src="../img/3.png" alt="">
-					<span>limited edition!</span>
 				</a>
 			</li>
 		</ul>
@@ -77,4 +82,5 @@
 		</div>
 	</div>
 </body>
+
 </html>
