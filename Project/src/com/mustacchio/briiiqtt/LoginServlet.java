@@ -33,7 +33,7 @@ public class LoginServlet extends HttpServlet {
 		Member loggedIn = dao.login(memberID,memberPW);
 		
 		ServletContext context = getServletContext();
-		RequestDispatcher dispatcher = context.getRequestDispatcher("/project/gallery.jsp");
+		RequestDispatcher dispatcher = context.getRequestDispatcher("/project/login.jsp");
 		if (loggedIn == null) {
 			 request.setAttribute("loginRequest", "logInError");
 			 dispatcher.forward(request, response);

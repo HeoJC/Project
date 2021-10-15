@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" id="htmll">
 
 <head>
     <meta charset="UTF-8">
@@ -9,9 +9,6 @@
     <style>
         div {
             text-align: center;
-        }
-
-        a {
             text-decoration: none;
             color: white;
         }
@@ -53,26 +50,58 @@
         ]
         let showList = document.getElementById('showList');
 
+        // for (let i = 0; i < imgSources.length; i++) {
+        //     let div = document.createElement('div');
+        //     let a = document.createElement('a');
+        //     div.appendChild(a);
+        //     let img = document.createElement('img');
+        //     img.src = imgSources[i];
+        //     a.appendChild(img);
+        //     a.setAttribute('onclick', "parent.rightiFrame.location.href='grey.html'");
+
+        //     //<< 가격이랑 좋아요부분
+        //     let innerDiv = document.createElement('div');
+        //     innerDiv.setAttribute('class', 'below')
+        //     a.appendChild(innerDiv);
+
+        //     let span = document.createElement('span');
+        //     let price = 10; // 가격
+        //     span.innerHTML = "$" + price;
+        //     innerDiv.appendChild(span);
+
+        //     span = document.createElement('span');
+        //     let likeIt = 3; // 좋아요
+        //     span.innerHTML = "❤"+likeIt;
+        //     innerDiv.appendChild(span);
+
+        //     //>>
+
+
+        //     showList.appendChild(div);
+        // }
         for (let i = 0; i < imgSources.length; i++) {
+            let divRow = document.createElement('div');
             let div = document.createElement('div');
-            let a = document.createElement('a');
-            div.appendChild(a);
+            divRow.appendChild(div);
             let img = document.createElement('img');
             img.src = imgSources[i];
-            a.appendChild(img);
-            a.setAttribute('onclick', "parent.rightiFrame.location.href='grey.html'");
+            div.appendChild(img);
+            // div.setAttribute('onclick', "parent.rightiFrame.location.href='grey.html'");
+            // div.onclick = function(){
+            //     console.log(this)
+            // }
             //<< 가격이랑 좋아요부분
             let innerDiv = document.createElement('div');
             innerDiv.setAttribute('class', 'below')
-            a.appendChild(innerDiv);
-            //가격
+            div.appendChild(innerDiv);
+
             let span = document.createElement('span');
-            let price = 10;
+            let price = 10; // 가격
             span.innerHTML = "$" + price;
             innerDiv.appendChild(span);
-            //좋아요
+
             span = document.createElement('span');
-            let likeIt = 3;
+            let likeIt = 3; // 좋아요
             span.innerHTML = "❤"+likeIt;
             innerDiv.appendChild(span);
 
