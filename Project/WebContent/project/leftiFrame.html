@@ -87,9 +87,10 @@
             img.src = imgSources[i];
             div.appendChild(img);
             // div.setAttribute('onclick', "parent.rightiFrame.location.href='grey.html'");
-            // div.onclick = function(){
-            //     console.log(this)
-            // }
+            div.onclick = function () {
+                // parent.document.getElementById('rightiFrame').setAttribute('style','background-color:red');
+                parent.document.location.href = "gallery.html?hi=0/bye=1"
+            }
             //<< 가격이랑 좋아요부분
             let innerDiv = document.createElement('div');
             innerDiv.setAttribute('class', 'below')
@@ -102,13 +103,15 @@
 
             span = document.createElement('span');
             let likeIt = 3; // 좋아요
-            span.innerHTML = "❤"+likeIt;
+            span.innerHTML = "❤" + likeIt;
             innerDiv.appendChild(span);
 
             //>>
 
 
             showList.appendChild(div);
+
+
         }
     </script>
 </body>
