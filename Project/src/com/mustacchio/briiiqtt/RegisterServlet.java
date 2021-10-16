@@ -1,7 +1,6 @@
 package com.mustacchio.briiiqtt;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -22,7 +21,6 @@ public class RegisterServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charSet=UTF-8");
 		response.setCharacterEncoding("UTF-8");
-		PrintWriter out = response.getWriter();
 		Member member = new Member();
 		member.setMemberID(request.getParameter("memberID"));
 		member.setMemberPW(request.getParameter("memberPW"));

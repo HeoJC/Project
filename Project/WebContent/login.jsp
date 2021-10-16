@@ -59,7 +59,7 @@
 		</a>
 	</div>
 	<div id="body">
-		<h1><span>wh1 are you?</span></h1>
+		<h1><span>ho are you?</span></h1>
 		<form action="LoginServlet" id="loginForm" method="get">
 			<input type="text" name="memberID" id="memberID" value="id">
 			<input type="password" name="memberPW" id="memberPW" value="password">
