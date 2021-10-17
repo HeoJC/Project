@@ -45,7 +45,7 @@
 		console.log(loginRequest);
 		if (loginRequest == 'loggedIn') {
 			console.log('로그인됨')
-		} else {
+		} else if(loginRequest == 'logInError') {
 			alert('없는 아이디이거나 비밀번호가 틀렸습니다.');
 		}
 	})
@@ -59,7 +59,7 @@
 		</a>
 	</div>
 	<div id="body">
-		<h1><span>ho are you?</span></h1>
+		<h1><span>wh1 are you?</span></h1>
 		<form action="LoginServlet" id="loginForm" method="get">
 			<input type="text" name="memberID" id="memberID" value="id">
 			<input type="password" name="memberPW" id="memberPW" value="password">

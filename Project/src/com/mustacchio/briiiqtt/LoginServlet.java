@@ -1,13 +1,17 @@
 package com.mustacchio.briiiqtt;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 
 @WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet {
@@ -19,6 +23,8 @@ public class LoginServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		PrintWriter out = response.getWriter();
+		Gson gson = new GsonBuilder().create();
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charSet=UTF-8");
 		response.setCharacterEncoding("UTF-8");
@@ -28,17 +34,14 @@ public class LoginServlet extends HttpServlet {
 		MemberDAO dao = new MemberDAO();
 		Member loggedIn = dao.login(memberID,memberPW);
 		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("login.jsp");
 		if (loggedIn == null) {
-			 request.setAttribute("loginRequest", "logInError");
-			 dispatcher.forward(request, response);
+			System.out.println("쿼리결과 없음");
 		} else {
-			request.setAttribute("loginRequest", "loggedIn");
-			request.setAttribute("sessionID", loggedIn.getMemberID());
-			request.setAttribute("sessionPW", loggedIn.getMemberPW());
-			request.setAttribute("sessionName", loggedIn.getMemberName());
-			request.setAttribute("sessionEMail", loggedIn.getMemberEMail());
-			dispatcher.forward(request, response);
+			System.out.println(loggedIn.getMemberID()+"로 로그인");
+			out.println(gson.toJson(loggedIn));
+			response.addCookie(new Cookie("memberID", loggedIn.getMemberID()));
+			response.addCookie(new Cookie("memberName", loggedIn.getMemberName()));
+			response.addCookie(new Cookie("memberEMail", loggedIn.getMemberEMail()));
 		}
 
 	}

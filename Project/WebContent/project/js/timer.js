@@ -4,7 +4,7 @@
 $(document).ready(function(){
     setInterval(timer,1000);
 })
-let timeExp = new Date('2021-10-17 00:19:10').getTime();
+let timeExp = new Date('2021-10-18 00:19:10').getTime();
 function timer (){
     let timeNow = new Date().getTime();
     let timeCnt = timeExp-timeNow;
