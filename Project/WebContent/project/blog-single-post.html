@@ -8,6 +8,7 @@
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link rel="stylesheet" type="text/css" href="css/mobile.css" media="screen and (max-width : 568px)">
 	<script type="text/javascript" src="js/mobile.js"></script>
+	<script src="./jquery-3.6.0.min.js"></script>
 </head>
 <body>
 	<div id="header">
@@ -69,5 +70,31 @@
 			</ul>
 		</div>
 	</div>
+	
+	<script>
+		$.ajax({
+			url: "../cartServlet?cmd=list",
+			type: "get",
+			dataType: "json",
+			success: function (result) {
+				console.log(result);
+				for (let row of result) {
+					$("#body").append(createDiv(row));
+				}
+			},
+			error: function (reject) {
+				console.log(reject);
+			}
+		});
+		
+		function createDiv(row) {
+			let divRow = $("<div />").addClass("row") ;
+			$(divRow).append(
+				$("<h1 />")
+					.append($("<span id='name' />").html(row.name))
+			)
+		}
+	</script>
+	
 </body>
 </html>

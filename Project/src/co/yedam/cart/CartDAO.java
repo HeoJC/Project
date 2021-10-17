@@ -20,8 +20,9 @@ public class CartDAO extends DAO{
 				Cart cart = new Cart() ;
 				cart.setId(rs.getString("id")) ;
 				cart.setName(rs.getString("name")) ;
-				cart.setCount(rs.getInt("count")) ;
 				cart.setPrice(rs.getInt("price")) ;
+				cart.setP_size(rs.getString("p_size"));
+				cart.setCount(rs.getInt("count")) ;
 				cart.setDeliveryfee(rs.getInt("deliveryfee")) ;
 				list.add(cart) ;
 			}
@@ -49,17 +50,19 @@ public class CartDAO extends DAO{
 				currId = rs.getInt("value") ;
 			}
 			currId++ ;
-			pstmt = conn.prepareStatement("insert into cart values(?,?,?,?,?") ;
+			pstmt = conn.prepareStatement("insert into cart values(?,?,?,?,?,?)") ;
 			pstmt.setInt(1, currId) ;
 			pstmt.setString(2, cart.getName()) ;
-			pstmt.setInt(3, cart.getCount()) ;
-			pstmt.setInt(4, cart.getPrice()) ;
-			pstmt.setInt(5, cart.getDeliveryfee()) ;
+			pstmt.setInt(3, cart.getPrice()) ;
+			pstmt.setString(4, cart.getP_size()) ;
+			pstmt.setInt(5, cart.getCount()) ;
+			pstmt.setInt(6, cart.getDeliveryfee()) ;
 			int r = pstmt.executeUpdate() ;
 			System.out.println(r + "건 입력") ;
 			
 			pstmt = conn.prepareStatement("update id_repository2 set value=? where name='cart'") ;
 			pstmt.setInt(1, currId) ;
+			pstmt.executeUpdate() ;
 			
 			conn.commit() ;
 			cart.setId(String.valueOf(currId)) ;

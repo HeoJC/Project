@@ -8,6 +8,7 @@
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link rel="stylesheet" type="text/css" href="css/mobile.css" media="screen and (max-width : 568px)">
 	<script type="text/javascript" src="js/mobile.js"></script>
+	<script src="./jquery-3.6.0.min.js"></script>
 </head>
 <body>
 	<div id="header">
@@ -17,25 +18,31 @@
 		<ul id="navigation"></ul>
 	</div>
 	<div id="body">
-	<div></div>
-		<h1><span>Deep One Tuck Sweat Pants [Grey]</span></h1>
-		<div>
-			<img src="../img/gray/gray_detail.png" alt="">
-			<div class="article">
-				<h4>XERO</h4>
-				<p>
-					<h4>₩ 39,000</h4>
-				</p>
-				<p>					
-					<select name="size" id="size">
-						<option value="size_S">size_S</option>
-						<option value="size_M" selected>size_M</option>
-						<option value="size_L">size_L</option>
-						<option value="size_FREE">size_FREE</option>
-					</select>
-				</p>
-			</div>
-		</div>
 	</div>
+	
+	<script>
+		$.ajax({
+			url: "../cartServlet?cmd=list",
+			type: "get",
+			dataType: "json",
+			success: function (result) {
+				console.log(result);
+				for (let row of result) {
+					$("#body").append(createDiv(row));
+				}
+			},
+			error: function (reject) {
+				console.log(reject);
+			}
+		});
+		
+		function createDiv(row) {
+			let divRow = $("<div />").addClass("row") ;
+			$(divRow).append(
+				$("<h1 />")
+					.append($("<span id='name' />").html(row.name))
+			)
+		}
+	</script>
 </body>
 </html>
