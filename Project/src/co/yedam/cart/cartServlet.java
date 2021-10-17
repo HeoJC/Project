@@ -35,19 +35,27 @@ public class cartServlet extends HttpServlet {
 			out.println(gson.toJson(list)) ;
 		} else if (cmd.equals("add")) {
 			String name = request.getParameter("name") ;
-			String count = request.getParameter("count") ;
 			String price = request.getParameter("price") ;
-			String delivery = request.getParameter("delivery") ;
+			String psize = request.getParameter("psize") ;
+			String count = request.getParameter("count") ;
+			String delivery = request.getParameter("deliveryfee") ;
+			String img = request.getParameter("img") ;
 			
 			Cart cart = new Cart() ;
 			cart.setName(name) ;
-			cart.setCount(Integer.parseInt(count)) ;
 			cart.setPrice(Integer.parseInt(price)) ;
+			cart.setP_size(psize) ;
+			cart.setCount(Integer.parseInt(count)) ;
 			cart.setDeliveryfee(Integer.parseInt(delivery)) ;
+			cart.setImg(img) ;
 			
 			dao.insertCart(cart) ;
 			
 			out.println(gson.toJson(cart)) ;	
+		} else if (cmd.equals("final")) {
+			List<Cart> list = dao.finalprice() ;
+			out.println(gson.toJson(list)) ;
+			
 		}
 	}
 

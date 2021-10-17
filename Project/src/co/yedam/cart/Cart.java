@@ -3,11 +3,11 @@ package co.yedam.cart;
 public class Cart {
 	private String id ; 
 	private String name ; 
-	private int count ;
 	private int price ;
+	private String p_size ;
+	private int count ;
 	private int deliveryfee ;
-	private String filename ;
-	
+	private String img ;
 
 	public String getId() {
 		return id;
@@ -38,11 +38,17 @@ public class Cart {
 	}
 	public void setDeliveryfee(int deliveryfee) {
 		this.deliveryfee = deliveryfee;
+	}	
+	public String getP_size() {
+		return p_size;
 	}
-	public String getFilename() {
-		return filename;
+	public void setP_size(String p_size) {
+		this.p_size = p_size;
 	}
-	public void setFilename(String filename) {
-		this.filename = filename;
+	public String getImg() {
+		return img;
+	}
+	public void setImg(String img) {
+		this.img = img;
 	}
 }

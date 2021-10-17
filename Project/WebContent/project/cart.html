@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>cart</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="css/mobile.css" media="screen and (max-width : 568px)">
+	<script type="text/javascript" src="js/mobile.js"></script>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+	<script src="./jquery-3.6.0.min.js"></script>
+</head>
+<body>
+	<div id="header">
+		<a href="index.html" class="logo">
+			<img src="images/logo.jpg" alt="">
+		</a>
+		<ul id="navigation"></ul>
+	</div>
+	<div id="first">
+	</div>
+	<div id="body">
+	</div>
+	<div id="last">
+	</div>
+	
+	<script>
+	
+		// 장바구니 타이틀 표시
+		$("#first").append($("<div />").addClass("row")
+				.append($("<dic />").addClass("article")
+						.append($("<h4 />").html(" 장바구니").addClass("bi-cart-fill me-1")))) ;	
+
+		// 장바구니 데이터베이스 요청 ajax
+		$.ajax({
+			url : "../cartServlet?cmd=list" ,
+			type : "get" ,
+			dataType : "json" ,
+			success : function (result) {
+				console.log(result) ;
+				for (let row of result) {
+					$("#body").append(createDiv(row)) ;
+				}
+			} ,
+			error : function (reject) {
+				console.log(reject) ;
+			}
+		}) ;
+
+		// 장바구니 화면에 표시
+		function createDiv(row) {
+			let divRow = $("<div />").addClass("row") ;
+			$(divRow).append(
+				$("<div />").html("<img width='200px' src='../img2/" + row.img + "'>") ,
+				$("<div />").addClass("article")
+				.append($("<table style='margin: auto;'/>")
+					.append($("<tr />")
+						.append($("<td />").append($("<h4 />").html("제품명")) , 
+								$("<td colspan='5' />").append($("<h4 />").html(row.name)) ,
+								$("<td />").append($("<h4 />").html("사이즈")) , 
+								$("<td />").append($("<h4 />").html(row.p_size))
+								)) ,
+				$("<div />").addClass("article")
+					.append($("<table style='margin: auto;'/>")
+						.append($("<tr />")
+							.append($("<td />").append($("<h4 />").html("가격")) , 
+									$("<td />").append($("<h4 />").html(row.price)) ,
+									$("<td />").append($("<h4 />").html("X")) ,
+									$("<td />").append($("<h4 />").html("수량")) , 
+									$("<td />").append($("<h4 />").html(row.count)) ,
+									$("<td />").append($("<h4 />").html("+")) ,
+									$("<td />").append($("<h4 />").html("배송비")) , 
+									$("<td />").append($("<h4 />").html(row.deliveryfee)))))) ,
+				$("<div />").addClass("article")
+				.append($("<table style='margin: auto;'/>")
+					.append($("<tr />")
+						.append($("<td />").append($("<h4 />").html("결제금액")) ,
+								$("<h4 id='finalpay'/>").html((row.price * row.count) + row.deliveryfee))))
+			) ;
+			
+			return divRow ;
+		}
+		
+		// 최종금액 요청하는 ajax
+ 		$.ajax({
+			url : "../cartServlet?cmd=final" ,
+			type : "get" ,
+			dataType : "json" ,
+			success : function (result) {
+				console.log(result) ;
+				let price = 0 ;
+ 				for (let row of result) {
+ 					price += (row.price * row.count) + row.deliveryfee ;
+				} 
+					createfinal(price) ; 						
+			} ,
+			error : function (reject) {
+				console.log(reject) ;
+			}
+		}) ; 
+		
+		// 최종결제금액 계산하는 function
+ 		function createfinal(price) {
+ 			console.log(price) ;
+ 			$("#finalfinalpay").append($("<h4 />").html("최종결제금액 : " + price)) ;
+ 		} ;
+ 		
+ 		// 최종결제금액 화면에 표시
+		$("#last").append($("<div />").addClass("row")
+					.append($("<table style='margin: auto;'/>")
+						.append($("<tr />")
+							.append($("<td id='finalfinalpay'/>"))) ,
+					$("<dic />").addClass("article")
+						.append($("<button id='buyBtn' onclick='' />").html(" 구매하기").addClass("bi-cart-fill me-1")))) ;
+		
+	</script>
+
+</body>
+</html>
