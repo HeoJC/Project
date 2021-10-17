@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>제품 상세 페이지</title>
+	<title>product info</title>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link rel="stylesheet" type="text/css" href="css/mobile.css" media="screen and (max-width : 568px)">
 	<script type="text/javascript" src="js/mobile.js"></script>
@@ -44,7 +44,8 @@
 			$(divRow).append(
 				$("<div />").addClass("article").append($("<h4 />").html(row.brand)) ,
 				$("<h1 />").append($("<span id='name'/>").html(row.name)) ,
-				$("<div />").html("<img width='500px' src='../img2/" + row.filename + "'>" ) ,
+				$("<div />").html("<img width='500px' src='../img2/" + row.filename + "'>") ,
+				$("<div id='imgname'/>").html(row.filename).hide() ,
 				$("<div />").addClass("article").append($("<h4 id='like'/>").html("♥" + row.likeit)) ,
 				$("<div />").addClass("article")
 					.append($("<table style='margin: auto;'/>")
@@ -105,6 +106,7 @@
 			let psize = $("#size option:selected").html() ;
 			let count = $("#countresult").html() ;
 			let deliveryfee = $("#deliveryfee").html() ;
+			let img = $("#imgname").html() ;
 			
 			if (psize == "사이즈 선택") {
 				alert("사이즈를 선택해주세요") ;
@@ -122,7 +124,8 @@
 						price : price ,
 						psize : psize ,
 						count : count ,
-						deliveryfee : deliveryfee
+						deliveryfee : deliveryfee ,
+						img : img
 							
 				} ,
 				dataType : "json" ,

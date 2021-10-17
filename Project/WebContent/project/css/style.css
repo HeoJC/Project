@@ -63,6 +63,12 @@
 	text-transform: uppercase;
 	width: 200px;
 }
+div#first , div#last {
+	margin: 0;
+	padding: 0 0 30px;
+	text-align: center;
+}
+
 /*******************************************************************************************************/
 /* 
 -------------------------------------------------------------------------------------------
@@ -138,9 +144,9 @@ div#fname , div#address , div#regNum , div#phone {
 	font-size: 20px;
 	font-weight: normal;
 	margin: 0 0 30px;
-	padding: 10% 27px 10px;
-	width: 500px;
-	height: 80px;
+	padding: 5% 27px 10px;
+	width: 700px;
+	height: 50px;
 }
 div#message {
 	background: #252525;
@@ -151,8 +157,38 @@ div#message {
 	font-weight: normal;
 	margin: 0 0 30px;
 	padding: 10% 27px 10px;
-	width: 500px;
+	width: 700px;
 	height: 150px;
+}
+#first > div .article h4 {
+	background: #252525;
+	color: #fff;
+	display: inline-block;
+	font-family: "Arial Black", Gadget, sans-serif;
+	font-size: 25px;
+	font-weight: normal;
+	margin: 0 0 30px;
+	padding: 8px 27px 10px;
+}
+#last > div td .article h4 {
+	background: #252525;
+	color: #fff;
+	display: inline-block;
+	font-family: "Arial Black", Gadget, sans-serif;
+	font-size: 25px;
+	font-weight: normal;
+	margin: 0 0 30px;
+	padding: 8px 27px 10px;
+}
+#finalfinalpay {
+	background: #252525;
+	color: #fff;
+	display: inline-block;
+	font-family: "Arial Black", Gadget, sans-serif;
+	font-size: 25px;
+	font-weight: normal;
+	margin: 0 0 30px;
+	padding: 8px 27px 10px;
 }
 /*
 -------------------------------------------------------------------------------------------
@@ -255,8 +291,7 @@ p a:hover {
 }
 #body > div .article {
 	margin: 0 auto;
-	padding: 30px 30px 0;
-	width: 560px;
+	width: 1000px;
 }
 #body > div .article h2 {
 	font-family: "Arial Black", Gadget, sans-serif;
@@ -449,7 +484,7 @@ p a:hover {
 #body form {
 	margin: 0 auto;
 	padding: 24px 0 0;
-	width: 620px;
+	width: 900px;
 }
 #body form input, #body form textarea {
 	border: 2px solid #252525;
