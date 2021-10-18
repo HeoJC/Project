@@ -8,7 +8,7 @@ public class MemberDAO extends DAO {
 
 	List<Member> members = new ArrayList<Member>();
 
-	public void addMember(Member input) {
+	public int addMember(Member input) {
 		connect();
 
 		String sql = "insert into members values (?, ?, ?, ?)";
@@ -21,12 +21,13 @@ public class MemberDAO extends DAO {
 			pstmt.setString(4, input.getMemberEMail());
 			int r = pstmt.executeUpdate();
 			System.out.println(r + "개 행 추가됨");
-
+			return r;
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			disconnect();
 		}
+		return -1;
 	}
 
 	public Member login(String memberID, String memberPW) {

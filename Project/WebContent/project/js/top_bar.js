@@ -94,11 +94,11 @@ $(document).ready(function () {
 	} else if (memberID != null && memberID != '') {
 
 		// << 홍길동님
-		a = document.createElement('a');
-		a.setAttribute('class', 'userInfoLinks');
-		a.setAttribute('href', '' /*개인정보페이지*/ );
-		a.innerHTML = memberName + ' 님'
-		userInfo.appendChild(a);
+		let span = document.createElement('span');
+		//  span.setAttribute('class', 'userInfoLinks');
+		span.setAttribute('href', 'javascript:void(0);');
+		span.innerHTML = memberName + ' 님'
+		userInfo.appendChild(span);
 		// >>
 
 		// << 장바구니

@@ -33,6 +33,15 @@
 	border-radius: 10px;
 	font-family: 'poller_oneregular';
 }
+#userInfo>span{
+	margin-left: 20px;
+	text-decoration: none;
+	color: black;
+	background-color: rgb(199, 192, 177);
+	padding: 8px;
+	border-radius: 10px;
+	font-family: 'poller_oneregular';
+}
 #leftiFrameDiv{
 	display: inline;
 	/* display: none; */
