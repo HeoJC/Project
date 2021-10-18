@@ -54,7 +54,7 @@ $(document).ready(function () {
 	let userInfo = document.getElementById('userInfo');
 
 	console.log(memberID + "-----------------");
-	if (memberID != null && memberID !== '') { // if(로그인){}
+	if (memberID != null && memberID != '') { // if(로그인){}
 
 		// << 홍길동님
 		a = document.createElement('a');
@@ -67,7 +67,7 @@ $(document).ready(function () {
 		// << 장바구니
 		a = document.createElement('a');
 		a.setAttribute('class', 'userInfoLinks');
-		a.setAttribute('href', '' /*개인정보페이지*/ );
+		a.setAttribute('href', '../project/cart.html');
 		a.innerHTML = '장바구니'
 		userInfo.appendChild(a);
 		// >>
@@ -75,7 +75,7 @@ $(document).ready(function () {
 		// << 로그아웃
 		a = document.createElement('a');
 		a.setAttribute('class', 'userInfoLinks');
-		a.setAttribute('href', '' /*개인정보페이지*/ );
+		a.setAttribute('href', 'index.html');
 		a.innerHTML = '로그아웃'
 		a.onclick = function(){
 			logout();

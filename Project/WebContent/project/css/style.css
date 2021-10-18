@@ -42,12 +42,14 @@
 #rightiFrameDiv{
 	display: inline;
 	padding: 1%;
-	display: '';
+	/* background-color: #898989; */
 }
 #leftiFrame{
 	background-color: rgb(37, 37, 37);
 	border-radius: 30px;
-	
+	display: inline;
+	/* display: flex; */
+	/* margin: 20px; */
 }
 #rightiFrame{
 	background-color: '';
@@ -64,7 +66,6 @@
 	text-transform: uppercase;
 	width: 200px;
 }
-<<<<<<< HEAD
 @font-face {
 	font-family: digital_dismay;
 	src: url(../fonts/Digital\ Dismay.otf);
@@ -84,14 +85,12 @@
 	font-family: digital_dismay;
 	position: absolute; bottom: 38%;
 }
-=======
 div#first , div#last {
 	margin: 0;
 	padding: 0 0 30px;
 	text-align: center;
 }
 
->>>>>>> fd849eb203f59e6e7ba34d1ebaf7181f7f6f226b
 /*******************************************************************************************************/
 /* 
 -------------------------------------------------------------------------------------------

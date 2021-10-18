@@ -38,4 +38,33 @@ public class ProductDAO extends DAO{
 		return list ;
 	}
 	
+	// 프로덕트테이블 모든 정보 조회
+	public List<Product> getProductListAll() {
+		connect() ;
+		List<Product> list = new ArrayList<>() ;
+		String sql = "select * from product";
+		
+		try {
+			pstmt = conn.prepareStatement(sql) ;
+			rs = pstmt.executeQuery() ;
+			
+			while(rs.next()) {
+				Product product = new Product() ;
+				product.setId(rs.getString("id")) ;
+				product.setBrand(rs.getString("brand")) ;
+				product.setName(rs.getString("name")) ;
+				product.setOriginprice(rs.getInt("originprice")) ;
+				product.setOffprice(rs.getInt("offprice")) ;
+				product.setLikeit(rs.getInt("likeit")) ;
+				product.setFilename(rs.getString("filename")) ;
+				list.add(product) ;
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			disconnect() ;
+		}		
+		return list ;
+	}
+	
 }

@@ -36,12 +36,7 @@
 </head>
 
 <body>
-    <div id="showList">
-        <!-- <div><a href="javascript:void(0);" onclick="parent.rightiFrame.location.href='grey.html'">
-                <img src="../img/gray/gray.jpg" alt="">
-                <div class="below"><span>$10</span><span>❤ 3</span></div>
-            </a></div> -->
-    </div>
+    <div id="showList"></div>
 
     <script>
         let imgSources = ["../img/gray/gray.jpg", "../img/hood/hood_main.jpg", "../img/horse/horse.jpg",
@@ -50,35 +45,14 @@
         ]
         let showList = document.getElementById('showList');
 
-        // for (let i = 0; i < imgSources.length; i++) {
-        //     let div = document.createElement('div');
-        //     let a = document.createElement('a');
-        //     div.appendChild(a);
-        //     let img = document.createElement('img');
-        //     img.src = imgSources[i];
-        //     a.appendChild(img);
-        //     a.setAttribute('onclick', "parent.rightiFrame.location.href='grey.html'");
-
-        //     //<< 가격이랑 좋아요부분
-        //     let innerDiv = document.createElement('div');
-        //     innerDiv.setAttribute('class', 'below')
-        //     a.appendChild(innerDiv);
-
-        //     let span = document.createElement('span');
-        //     let price = 10; // 가격
-        //     span.innerHTML = "$" + price;
-        //     innerDiv.appendChild(span);
-
-        //     span = document.createElement('span');
-        //     let likeIt = 3; // 좋아요
-        //     span.innerHTML = "❤"+likeIt;
-        //     innerDiv.appendChild(span);
-
-        //     //>>
-
-
-        //     showList.appendChild(div);
+        let xhr = new XMLHttpRequest();
+        xhr.open('post','../productServlet');
+        xhr.send('cmd=listAll');
+        // xhr.onload(){
+            
         // }
+
+
         for (let i = 0; i < imgSources.length; i++) {
             let divRow = document.createElement('div');
             let div = document.createElement('div');
@@ -86,10 +60,9 @@
             let img = document.createElement('img');
             img.src = imgSources[i];
             div.appendChild(img);
-            // div.setAttribute('onclick', "parent.rightiFrame.location.href='grey.html'");
             div.onclick = function () {
-                parent.document.getElementById('rightiFrame').setAttribute('style','background-color:red');
-                parent.document.location.href = "gallery.html?hi=0/bye=1"
+                // parent.document.location.href = "gallery.html?hi=0/bye=1"
+                parent.document.rightiFrame.location.href = "productInfo.html"
             }
             //<< 가격이랑 좋아요부분
             let innerDiv = document.createElement('div');
