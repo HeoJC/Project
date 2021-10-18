@@ -58,6 +58,8 @@ public class cartServlet extends HttpServlet {
 		} else if (cmd.equals("final")) {
 			List<Cart> list = dao.finalprice() ;
 			out.println(gson.toJson(list)) ;
+		} else if (cmd.equals("buy")) {
+			dao.buyCart() ;
 		} else if (cmd.equals("del")) {
 			String id = request.getParameter("id") ;
 			if(dao.deleteCart(id) == null) {

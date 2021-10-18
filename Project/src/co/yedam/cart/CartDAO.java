@@ -118,6 +118,17 @@ public class CartDAO extends DAO{
 			disconnect() ;
 		}		
 		return list ;
-	} 
+	}
+	
+	public void buyCart() {
+		connect() ;
+		
+		try {
+			stmt = conn.createStatement() ;
+			rs = stmt.executeQuery("delete from cart where id is not null") ;
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 	
 }
