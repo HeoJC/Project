@@ -62,7 +62,7 @@
 				$("<div />").addClass("article")
 					.append($("<table style='margin: auto;'/>")
 						.append($("<tr />")
-							.append($("<td />").append($("<h4 />").html("제품번호")) ,
+							.append($("<td />").append($("<h4 />").html("주문번호")) ,
 									$("<td />").append($("<h4 id='cartid'/>").html(row.id)) ,
 									$("<td />").append($("<h4 />").html("사이즈")) , 
 									$("<td />").append($("<h4 />").html(row.psize))))) ,
@@ -117,7 +117,7 @@
 							.append($("<td />").append($("<h4 />").html("최종결제금액 : ")) ,
 									$("<td />").append($("<h4 id='finalfinalpay'/>")))) ,
 					$("<div />").addClass("article")
-						.append($("<button id='buyBtn' onclick='' />").html(" 구매하기").addClass("bi-cart-fill me-1")))) ;
+						.append($("<button id='buyBtn' onclick='buyBtn()' />").html(" 구매하기").addClass("bi-cart-fill me-1")))) ;
 		
 		
 		// 삭제버튼 function
@@ -149,6 +149,28 @@
 			}) ;
 		}
 		
+		// 구매하기버튼 function
+		function buyBtn() {
+			var returnValue = confirm("구매하시겠습니까?") ;
+			if (returnValue == false) {
+				alert("취소하셨습니다") ;	
+				return ;
+			}
+			alert("구매완료") ;
+			
+			$.ajax({
+				url : "../cartServlet?cmd=buy" ,
+				type : "get" ,
+				success : function (result) {
+					console.log(result) ;
+					$("#body").remove() ;
+					finalprice() ;
+				} ,
+				error : function (reject) {
+					console.log(reject) ;
+				}
+			})
+		}
 		
 	</script>
 

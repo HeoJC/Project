@@ -1,0 +1,61 @@
+<!doctype html>
+<!-- Website Template by freewebsitetemplates.com -->
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Contact</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="css/mobile.css" media="screen and (max-width : 568px)">
+	<script type="text/javascript" src="js/mobile.js"></script>
+	<script src="js/top_bar.js"></script>
+	<script src="./jquery-3.6.0.min.js"></script>
+</head>
+
+<body>
+	<div id="header">
+		<div id="userInfo"></div>
+		<a href="index.html" class="logo">
+			<img src="images/logo.jpg" alt="">
+		</a>
+		<ul id="navigation">
+		</ul>
+	</div>
+	<div id="body">
+		<script>
+			$("#body").append(
+				$("<h1 />").append($("<span />").html("ADMIN PAGE")) ,
+				$("<div />").addClass("article")
+				.append($("<table style='margin: auto;'/>")
+					.append($("<tr />")
+						.append($("<td />").append($("<h4 />").html("회원관리")) ,
+								$("<td id='memberBtn'/>").append() , // 회원관리버튼 (누르면 아래에 회원 목록이 생기게)
+								$("<td />").append($("<h4 />").html("상품추가")) , 
+								$("<td />").append() // 상품추가버튼 (누르면 상품추가 페이지 연결되도록)
+								))) ,
+			) ;
+
+		</script>
+	</div>
+	<div id="footer">
+		<div>
+			<p>&copy; 2023 by KIM & HEO. All rights reserved.</p>
+			<ul>
+				<li>
+					<a href="https://twitter.com/" id="twitter">twitter</a>
+				</li>
+				<li>
+					<a href="https://www.facebook.com/" id="facebook">facebook</a>
+				</li>
+				<li>
+					<a href="https://www.google.com/" id="google">google</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+
+
+</body>
+
+</html>

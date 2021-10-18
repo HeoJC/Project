@@ -63,7 +63,35 @@ $(document).ready(function () {
 	let userInfo = document.getElementById('userInfo');
 
 	console.log(memberID + "-----------------");
-	if (memberID != null && memberID != '') { // if(로그인){}
+	if (memberID == "admin") { // if(로그인){}
+	
+		// << 관리자메뉴
+		a = document.createElement('a');
+		a.setAttribute('class', 'userInfoLinks');
+		a.setAttribute('href', '../project/adminpage.html');
+		a.innerHTML ='관리자메뉴' ;
+		userInfo.appendChild(a);
+		// >>
+
+		// << 장바구니
+		a = document.createElement('a');
+		a.setAttribute('class', 'userInfoLinks');
+		a.setAttribute('href', '../project/cart.html');
+		a.innerHTML = '장바구니'
+		userInfo.appendChild(a);
+		// >>
+
+		// << 로그아웃
+		a = document.createElement('a');
+		a.setAttribute('class', 'userInfoLinks');
+		a.setAttribute('href', 'index.html');
+		a.innerHTML = '로그아웃'
+		a.onclick = function(){
+			logout();
+		}
+		userInfo.appendChild(a);
+		
+	} else if (memberID != null && memberID != '') {
 
 		// << 홍길동님
 		let span = document.createElement('span');
@@ -91,6 +119,7 @@ $(document).ready(function () {
 		}
 		userInfo.appendChild(a);
 		// >>
+		
 	} else {
 
 		// << 로그인
