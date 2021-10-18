@@ -116,16 +116,6 @@ select#size {
 	margin: 0 0 30px;
 	padding: 8px 27px 10px;
 }
-#body > div .article h2 {
-	background: #252525;
-	color: #fff;
-	display: inline-block;
-	font-family: "Arial Black", Gadget, sans-serif;
-	font-size: 25px;
-	font-weight: normal;
-	margin: 0 0 30px;
-	padding: 8px 27px 10px;
-}
 #body h1#countresult {
 	color: #000000;
 	display: inline;
@@ -142,7 +132,7 @@ input#countbutton1 , input#countbutton2 {
 	font-family: "Arial Black", Gadget, sans-serif;
 	font-size: 15px;
 }
-button#buyBtn {
+button#buyBtn , #delBtn {
 	background: #252525;
 	color: #fff;
 	display: inline-block;
@@ -195,6 +185,16 @@ div#message {
 	padding: 8px 27px 10px;
 }
 #last > div td .article h4 {
+	background: #252525;
+	color: #fff;
+	display: inline-block;
+	font-family: "Arial Black", Gadget, sans-serif;
+	font-size: 25px;
+	font-weight: normal;
+	margin: 0 0 30px;
+	padding: 8px 27px 10px;
+}
+#last div td h4 {
 	background: #252525;
 	color: #fff;
 	display: inline-block;

@@ -4,7 +4,7 @@ public class Cart {
 	private String id ; 
 	private String name ; 
 	private int price ;
-	private String p_size ;
+	private String psize ;
 	private int count ;
 	private int deliveryfee ;
 	private String img ;
@@ -39,11 +39,11 @@ public class Cart {
 	public void setDeliveryfee(int deliveryfee) {
 		this.deliveryfee = deliveryfee;
 	}	
-	public String getP_size() {
-		return p_size;
+	public String getPsize() {
+		return psize;
 	}
-	public void setP_size(String p_size) {
-		this.p_size = p_size;
+	public void setPsize(String psize) {
+		this.psize = psize;
 	}
 	public String getImg() {
 		return img;
