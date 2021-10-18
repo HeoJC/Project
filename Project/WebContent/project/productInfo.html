@@ -12,10 +12,6 @@
 </head>
 <body>
 	<div id="header">
-		<a href="index.html" class="logo">
-			<img src="images/logo.jpg" alt="">
-		</a>
-		<ul id="navigation"></ul>
 	</div>
 	<div id="body">
 	</div>
@@ -64,8 +60,6 @@
 									$("<td />").append($("<h4 style='text-decoration:line-through'/>").html(row.originprice)) ,
 									$("<td />").append($("<h4 />").html("할인가")) , 
 									$("<td />").append($("<h4 id='finalprice'/>").html(row.offprice)) ))) ,
-				//$("<div />").addClass("article").append($("<h4 style='text-decoration:line-through'/>").html("₩ " + row.originprice)) ,
-				//$("<div />").addClass("article").append($("<h4 />").html("₩ " + row.offprice)) ,
 				$("<div />").addClass("article")
 				.append($("<table style='margin: auto;'/>")
 						.append($("<tr />")
@@ -84,8 +78,7 @@
 					.append($("<tr />")
 						.append($("<td />").append($("<h4 class='fee'/>").html("배송비")) ,
 								$("<td />").append($("<h4 class='fee' id='deliveryfee'/>").html("2500"))))) , 
-				$("<div />").addClass("article").append($("<button id='buyBtn' onclick='buy()' />").html(" 장바구니 추가").addClass("bi-cart-fill me-1")) ,
-				//$("<div />").addClass("article").append($("<h4 />").append($("<i />").addClass("bi-cart-fill me-1"))) 
+				$("<div />").addClass("article").append($("<button id='buyBtn' onclick='buy()' />").html(" 장바구니 추가").addClass("bi-cart-fill me-1"))  
 			) ;
 			
 			return divRow ;

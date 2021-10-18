@@ -21,7 +21,7 @@ public class CartDAO extends DAO{
 				cart.setId(rs.getString("id")) ;
 				cart.setName(rs.getString("name")) ;
 				cart.setPrice(rs.getInt("price")) ;
-				cart.setP_size(rs.getString("p_size"));
+				cart.setPsize(rs.getString("psize"));
 				cart.setCount(rs.getInt("count")) ;
 				cart.setDeliveryfee(rs.getInt("deliveryfee")) ;
 				cart.setImg(rs.getString("img")) ;
@@ -55,7 +55,7 @@ public class CartDAO extends DAO{
 			pstmt.setInt(1, currId) ;
 			pstmt.setString(2, cart.getName()) ;
 			pstmt.setInt(3, cart.getPrice()) ;
-			pstmt.setString(4, cart.getP_size()) ;
+			pstmt.setString(4, cart.getPsize()) ;
 			pstmt.setInt(5, cart.getCount()) ;
 			pstmt.setInt(6, cart.getDeliveryfee()) ;
 			pstmt.setString(7, cart.getImg()) ;
@@ -76,6 +76,22 @@ public class CartDAO extends DAO{
 			} catch (SQLException e1) {
 				e1.printStackTrace();
 			}
+			return null ;
+		} finally {
+			disconnect() ;
+		}
+	}
+	
+	public String deleteCart (String id) {
+		connect() ;
+		try {
+			pstmt = conn.prepareStatement("delete from cart where id=?") ;
+			pstmt.setString(1, id) ;
+			int r = pstmt.executeUpdate() ;
+			System.out.println(r + "건 삭제") ;
+			return id ;
+		} catch (SQLException e) {
+			e.printStackTrace();
 			return null ;
 		} finally {
 			disconnect() ;
