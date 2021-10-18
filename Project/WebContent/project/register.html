@@ -9,20 +9,50 @@
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link rel="stylesheet" type="text/css" href="css/mobile.css" media="screen and (max-width : 568px)">
 	<script type="text/javascript" src="js/mobile.js"></script>
+	<script src="../project/js/resetInput.js"></script>
 	<script src="js/top_bar.js"></script>
 </head>
 
 <script>
-	window.onload = function () {
-
-		// << 입력창 클릭시 value = null;
-		let inputs = document.getElementsByTagName('input')
-		for (let i = 0; i < inputs.length; i++) {
-			inputs[i].onclick = function(){
-				inputs[i].setAttribute('value','');
+	function registerButtonPressed(){
+		console.log('등록버튼눌림');
+		let memberID = document.regForm.memberID.value;
+		let memberPW = document.regForm.memberPW.value;
+		let memberName = document.regForm.memberName.value;
+		let memberEMail = document.regForm.memberEMail.value;
+		if (memberID == "" || memberID == "id") {
+			window.alert("등록할 ID를 입력하십시오.");
+			document.loginForm.memberID.focus();
+			return;
+		}
+		if (memberPW == "" || memberPW == "password") {
+			window.alert("등록할 PASSWORD를 입력하십시오.");
+			document.loginForm.memberPW.focus();
+			return;
+		}
+		if (memberName == "" || memberName == "name") {
+			window.alert("당신의 이름을 입력하십시오.");
+			document.loginForm.memberPW.focus();
+			return;
+		}
+		if (memberPW == "" || memberPW == "email") {
+			window.alert("등록할 EMAIL을 입력하십시오.");
+			document.loginForm.memberPW.focus();
+			return;
+		}
+		let xhr = new XMLHttpRequest();
+		xhr.open('post','../RegisterServlet');
+		xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		xhr.send('memberID=' + memberID + '&memberPW=' + memberPW + '&memberName=' + memberName + '&memberEMail=' + memberEMail);
+		xhr.onload = function(){
+			let result = xhr.responseText
+			if (result < 0){
+				alert('등록실패: SQL EXCEPTION');
+			} else{
+				alert('환영합니다! 등록하신 ID로 로그인해주세요.')
+				document.location.href="index.html";
 			}
 		}
-		// >>
 	}
 </script>
 
@@ -35,12 +65,12 @@
 	</div>
 	<div id="body">
 		<h1><span>welcome!</span></h1>
-		<form action="../RegisterServlet" id="regForm" method="get">
+		<form action="" name="regForm" id="regForm">
 			<input type="text" name="memberID" id="memberID" value="id">
 			<input type="password" name="memberPW" id="memberPW" value="password">
 			<input type="text" name="memberName" id="memberName" value="name">
 			<input type="text" name="memberEMail" id="memberEMail" value="email">
-			<br><input type="submit" name="register" id="send" value="register">
+			<br><button type="button" onclick="registerButtonPressed()" id="send">REGISTER</button>
 		</form>
 	</div>
 	<div id="footer">

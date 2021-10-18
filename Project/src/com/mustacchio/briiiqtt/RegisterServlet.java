@@ -1,6 +1,7 @@
 package com.mustacchio.briiiqtt;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -21,6 +22,7 @@ public class RegisterServlet extends HttpServlet {
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charSet=UTF-8");
 		response.setCharacterEncoding("UTF-8");
+		PrintWriter out = response.getWriter();
 		Member member = new Member();
 		member.setMemberID(request.getParameter("memberID"));
 		member.setMemberPW(request.getParameter("memberPW"));
@@ -28,8 +30,13 @@ public class RegisterServlet extends HttpServlet {
 		member.setMemberEMail(request.getParameter("memberEMail"));
 
 		MemberDAO dao = new MemberDAO();
-
-		dao.addMember(member);
+		int r = dao.addMember(member);
+		
+		if(r == -1) {
+			out.println(-1);
+		} else {
+			out.println(r);
+		}
 
 	}
 
