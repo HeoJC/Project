@@ -66,5 +66,4 @@ public class ProductDAO extends DAO{
 		}		
 		return list ;
 	}
-	
 }
