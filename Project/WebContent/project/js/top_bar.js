@@ -4,26 +4,36 @@
 
 
 
-
-
-
-
-
-
-
-
+let cookieString = document.cookie.split("; ");
 
 
 function logout() {
 	document.cookie = 'memberID=; expires=Thu, 18 Dec 2013 12:00:00 GMT';
-	let date = new Date();
-	date.setDate(date.getDate() - 100);
-	for(let i of cookies){
-		documennt.cookie = `${cookies.split("=")[0]}=;Expires=${date.toUTCString()}`
-	}
-	// alert('정상적으로 로그아웃 되었습니다.')
-	console.log('로그아웃ㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇ람ㅇㄴ럶ㄴ이ㅏㅓㅁㄹㄴㅇ')
+	console.log('쿠키삭제')
+	// let date = new Date();
+	// date.setDate(date.getDate() - 100);
+
+
+
+	// for(let i of cookies){
+	// 	documennt.cookie = `${cookies.split("=")[0]}=;Expires=${date.toUTCString()}`
+	// }
+	// // alert('정상적으로 로그아웃 되었습니다.')
+	// console.log('로그아웃ㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇ람ㅇㄴ럶ㄴ이ㅏㅓㅁㄹㄴㅇ')
+
+
+
+
+
+
 }
+
+
+
+
+
+
+
 
 $(document).ready(function () {
 	console.log('top_bar.js 시작');
@@ -32,7 +42,6 @@ $(document).ready(function () {
 	let memberID = '';
 	let memberName = '';
 	let memberEMail = '';
-	let cookieString = document.cookie.split("; ");
 	for (let cookies of cookieString) {
 		if (cookies.split("=")[0] == "memberID") {
 			memberID = cookies.split("=")[1];
@@ -112,6 +121,7 @@ $(document).ready(function () {
 	}
 	// >>
 
+	
 
 	console.log('top_bar.js 끝');
 })

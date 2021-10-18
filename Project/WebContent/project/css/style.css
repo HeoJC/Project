@@ -35,14 +35,16 @@
 }
 #leftiFrameDiv{
 	display: inline;
+	/* display: none; */
 	padding: 1%;
 	display: '';
 }
 
 #rightiFrameDiv{
 	display: inline;
+	/* display: none; */
 	padding: 1%;
-	/* background-color: #898989; */
+	background-color: #898989;
 }
 #leftiFrame{
 	background-color: rgb(37, 37, 37);
