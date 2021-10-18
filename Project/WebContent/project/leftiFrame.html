@@ -71,7 +71,7 @@
                 div.appendChild(innerDiv);
                 
                 let span = document.createElement('span');
-                span.innerHTML = "₩ " + data[i].originprice;
+                span.innerHTML = "<del>₩ " + data[i].originprice +"</del> ₩ "+data[i].offprice;
                 innerDiv.appendChild(span);
 
                 span = document.createElement('span');
