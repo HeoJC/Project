@@ -33,6 +33,7 @@ public class cartServlet extends HttpServlet {
 		if (cmd.equals("list")) {
 			List<Cart> list = dao.getCartList() ;
 			out.println(gson.toJson(list)) ;
+			
 		} else if (cmd.equals("add")) {
 			String id = request.getParameter("id") ;
 			String name = request.getParameter("name") ;
@@ -58,10 +59,15 @@ public class cartServlet extends HttpServlet {
 			List<Cart> list = dao.finalprice() ;
 			out.println(gson.toJson(list)) ;
 		} else if (cmd.equals("del")) {
-			out.println("{\"retCode\":\"fail\"}") ;
-			return ;
-		}
-		out.println("{\"retCode\":\"success\"}") ;
+			String id = request.getParameter("id") ;
+			if(dao.deleteCart(id) == null) {
+				out.println("{\"retCode\":\"fail\"}") ;
+				return ;
+			}
+			out.println("{\"retCode\":\"success\"}") ;
+		} else {
+			out.println("<h1>" + cmd + "</h1>") ;
+		}		
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
