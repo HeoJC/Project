@@ -9,6 +9,7 @@
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link rel="stylesheet" type="text/css" href="css/mobile.css" media="screen and (max-width : 568px)">
 	<script type="text/javascript" src="js/mobile.js"></script>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
 	<script src="js/top_bar.js"></script>
 	<script src="./jquery-3.6.0.min.js"></script>
 </head>
@@ -26,16 +27,47 @@
 		<script>
 			$("#body").append(
 				$("<h1 />").append($("<span />").html("ADMIN PAGE")) ,
+				$("<div />").addClass("article").append($("<img width='300px' src='../img2/admin.png'>")) ,
 				$("<div />").addClass("article")
 				.append($("<table style='margin: auto;'/>")
 					.append($("<tr />")
-						.append($("<td />").append($("<h4 />").html("회원관리")) ,
-								$("<td id='memberBtn'/>").append() , // 회원관리버튼 (누르면 아래에 회원 목록이 생기게)
-								$("<td />").append($("<h4 />").html("상품추가")) , 
-								$("<td />").append() // 상품추가버튼 (누르면 상품추가 페이지 연결되도록)
-								))) ,
+						.append($("<td />").append($("<h4 style='margin:0 auto;'/>").html("회원목록열람")) ,
+								$("<td />").append($("<button id='memberBtn' onclick='memberlist()' />").addClass("bi-book-fill me-1"))))) ,
+				$("<div />").addClass("article")
+				.append($("<table  id='memberlisttable' style='margin: auto;'/>")) ,	
+				$("<div />").addClass("article")
+				.append($("<table style='margin: auto;'/>")	
+					.append($("<tr />")			
+						.append($("<td />").append($("<h4 style='margin:0 auto;'/>").html("상품추가")) , 
+								$("<td />").append($("<button id='productInputBtn' onclick='' />'").addClass("bi-plus me-1")))))
 			) ;
 
+			function memberlist() {
+				$.ajax({
+					url : "../memberServlet" ,
+					type : "get" ,
+					dataType : "json" ,
+					success : function (result) {
+						console.log(result) ;
+						for (let row of result) {
+							if ($("#membertd").html() == row.memberID) {
+								return ;
+							}
+							$("#memberlisttable").append($("<tr id='memberlisttr'/>")
+								.append($("<td />").html(" 아이디 : ") ,
+										$("<td id='membertd'/>").html(row.memberID) ,
+										$("<td />").html(" / 이름 : ") ,
+										$("<td />").html(row.memberName) ,
+										$("<td />").html(" / 이메일 : ") ,
+										$("<td />").html(row.memberEMail)))
+						}
+					} ,
+					error : function (reject) {
+						console.log(reject) ;
+					}
+				}) ;
+			}
+			
 		</script>
 	</div>
 	<div id="footer">

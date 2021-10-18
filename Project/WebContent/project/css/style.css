@@ -96,7 +96,7 @@ div#first , div#last {
 /*******************************************************************************************************/
 /* 
 -------------------------------------------------------------------------------------------
-허재철 10-17 10:00
+허재철 
 */
 
 select#size {
@@ -133,6 +133,14 @@ input#countbutton1 , input#countbutton2 {
 	font-size: 15px;
 }
 button#buyBtn , #delBtn {
+	background: #252525;
+	color: #fff;
+	display: inline-block;
+	font-family: "Arial Black", Gadget, sans-serif;
+	font-size: 25px;
+	font-weight: normal;
+}
+button#memberBtn , #productInputBtn {
 	background: #252525;
 	color: #fff;
 	display: inline-block;
@@ -213,6 +221,28 @@ div#message {
 	font-weight: normal;
 	margin: 0 0 30px;
 	padding: 8px 27px 10px;
+}
+#body > div.article td h4 {
+	background: #252525;
+	color: #fff;
+	display: inline-block;
+	font-family: "Arial Black", Gadget, sans-serif;
+	font-size: 25px;
+	font-weight: normal;
+	margin: 0 0 30px;
+	padding: 8px 27px 10px;
+}
+#memberlisttr {
+	background: #252525;
+	color: #fff;
+	display: inline-block;
+	font-family: "Arial Black", Gadget, sans-serif;
+	font-size: 15px;
+	font-weight: normal;
+}
+#memberlisttable {
+	margin: 0 auto;
+	width: 700px;
 }
 /*
 -------------------------------------------------------------------------------------------
