@@ -1,0 +1,86 @@
+<!doctype html>
+<!-- Website Template by freewebsitetemplates.com -->
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Contact - Mustache Enthusiast</title>
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="stylesheet" type="text/css" href="css/mobile.css" media="screen and (max-width : 568px)">
+	<script type="text/javascript" src="js/mobile.js"></script>
+	<script src="js/resetInput.js"></script>
+	<script src="js/top_bar.js"></script>
+</head>
+<script>
+	function uploadButtonPressed() {
+		console.log('등록버튼눌ㄹ미');
+		let name = document.loginForm.name.value;
+		let brand = document.loginForm.brand.value;
+		let price = document.loginForm.price.value;
+		// let filename = document.loginForm.filename.value;
+		if (name == "" || name == "product name") { //FIXME: UPPER? LOWER?
+			window.alert("상품이름");
+			document.loginForm.memberID.focus();
+			return;
+		}
+		if (brand == "" || brand == "brand") { 
+			window.alert("브랜드");
+			document.loginForm.memberPW.focus();
+			return;
+		}
+		if (price == "" || price == "price") { //FIXME: 조건 바꾸기. 문자열이랑 정수랑 비교?
+			window.alert("가격");
+			document.loginForm.memberPW.focus();
+			return;
+		}
+		let xhr = new XMLHttpRequest();
+		xhr.open('');
+		xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+		xhr.send();
+		xhr.onload = function () {}
+	}
+</script>
+
+<body>
+	<div id="header">
+		<div id="userInfo"></div>
+		<a href="index.html" class="logo">
+			<img src="images/logo.jpg" alt="">
+		</a>
+		<ul id="navigation">
+			<li>
+				<a href="gallery.html">gallery</a>
+			</li>
+		</ul>
+	</div>
+	<div id="body">
+		<h1><span>product upload</span></h1>
+		<form action="">
+			<input type="text" name="name" id="" value="product name">
+			<input type="text" name="brand" id="" value="brand">
+			<input type="text" name="price" id="" value="price">
+			<input type="text" name="filename" id="" value="filename">
+			<button>사진등록(미구현)</button><br>
+			<br><button type="button" onclick="uploadButtonPressed()" id="send">판다 이것 !</button>
+		</form>
+	</div>
+	<div id="footer">
+		<div>
+			<p>&copy; 2023 by KIM & HEO. All rights reserved.</p>
+			<ul>
+				<li>
+					<a href="https://twitter.com/" id="twitter">twitter</a>
+				</li>
+				<li>
+					<a href="https://www.facebook.com/" id="facebook">facebook</a>
+				</li>
+				<li>
+					<a href="https://www.google.com/" id="google">google</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</body>
+
+</html>

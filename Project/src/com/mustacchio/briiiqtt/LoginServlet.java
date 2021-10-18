@@ -36,9 +36,13 @@ public class LoginServlet extends HttpServlet {
 		
 		if (loggedIn == null) {
 			System.out.println("쿼리결과 없음");
+			out.println(gson.toJson(0));
+			response.addCookie(new Cookie("memberID", null));
+			response.addCookie(new Cookie("memberName", null));
+			response.addCookie(new Cookie("memberEMail", null));
 		} else {
 			System.out.println(loggedIn.getMemberID()+"로 로그인");
-			out.println(gson.toJson(loggedIn));
+			out.println(gson.toJson(1));
 			response.addCookie(new Cookie("memberID", loggedIn.getMemberID()));
 			response.addCookie(new Cookie("memberName", loggedIn.getMemberName()));
 			response.addCookie(new Cookie("memberEMail", loggedIn.getMemberEMail()));

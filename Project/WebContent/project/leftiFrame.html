@@ -66,16 +66,21 @@
                     parent.document.rightiFrame.location.href = "productInfo.html?cmd=list&productID="+data[i].id;
                 }
                 //<< 가격이랑 좋아요부분
+                let span;
                 let innerDiv = document.createElement('div');
                 innerDiv.setAttribute('class', 'below')
                 div.appendChild(innerDiv);
                 
-                let span = document.createElement('span');
-                span.innerHTML = "<del>₩ " + data[i].originprice +"</del> ₩ "+data[i].offprice;
+                span = document.createElement('span');
+                span.innerHTML = /*"<del>₩ " + data[i].originprice +"</del>"+*/" ₩ "+data[i].offprice;
+                innerDiv.appendChild(span);
+                
+                span = document.createElement('span');
+                span.innerHTML = "❤ " + data[i].likeit;
                 innerDiv.appendChild(span);
 
                 span = document.createElement('span');
-                span.innerHTML = "❤ " + data[i].likeit;
+                span.innerHTML = "<br>"+data[i].brand;
                 innerDiv.appendChild(span);
 
                 //>>

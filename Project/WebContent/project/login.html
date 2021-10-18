@@ -35,11 +35,12 @@
 		xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
 		xhr.send('memberID=' + memberID + '&memberPW=' + memberPW);
 		xhr.onload = function () {
-			console.log('온로드');
-			if (document.cookie == null) {
-				console.log('쿠키없음');
+			console.log('request onload');
+			console.log(document.cookie);
+			if(xhr.responseText == 0){
+				console.log('쿼리 결과 없음');
 				alert('없는 아이디이거나 비밀번호가 틀렸습니다.')
-			} else {
+			} else if(xhr.responseText == 1){
 				console.log('있긴있음');
 				document.location.href = "index.html";
 			}

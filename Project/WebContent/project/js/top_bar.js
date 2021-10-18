@@ -4,37 +4,42 @@
 
 
 
-let cookieString = document.cookie.split("; ");
-
+let cookieString = document.cookie.split("; "); // {cookieString[0](키=밸류); cookieString[1](키=밸류); ~~...;}
 
 function logout() {
-	document.cookie = 'memberID=; expires=Thu, 18 Dec 2013 12:00:00 GMT';
-	console.log('쿠키삭제')
-	// let date = new Date();
-	// date.setDate(date.getDate() - 100);
+	console.log(cookieString)
+	document.cookie = 'memberID=null; expires=Thu, 18 Dec 2013 12:00:00 GMT';
+	console.log(document.cookie);
+	console.log('안녕쿠키');
 
+	document.cookie = "username=John Doe; expires=Thu, 18 Dec 2013 12:00:00 UTC";
+	console.log(document.cookie);
+	document.cookie = "username=John Smith; expires=Thu, 18 Dec 2013 12:00:00 UTC; path=/";
+	console.log(document.cookie);
 
+	setCookie('memberID', null, 1)
+	
+	for (let cookies of cookieString) {
+		for (let i of cookies) {
+			let date = new Date();
+			date.setDate(date.getDate() - 100);
+			document.cookie = `${cookies.split("=")[0]}=;Expires=${date.toUTCString()}`
+		}
+		// alert('정상적으로 로그아웃 되었습니다.')
+		console.log('로그아웃ㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇ람ㅇㄴ럶ㄴ이ㅏㅓㅁㄹㄴㅇ')
 
-	// for(let i of cookies){
-	// 	documennt.cookie = `${cookies.split("=")[0]}=;Expires=${date.toUTCString()}`
-	// }
-	// // alert('정상적으로 로그아웃 되었습니다.')
-	// console.log('로그아웃ㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇ람ㅇㄴ럶ㄴ이ㅏㅓㅁㄹㄴㅇ')
-
-
-
-
-
-
+	}
 }
 
+function setCookie(key, value, expiredays) {
+    var todayDate = new Date();
+    todayDate.setDate(todayDate.getDate() + expiredays);
+    document.cookie = key + "=" + escape(value) + "; path=/; expires=" + todayDate.toGMTString() + ";"
+    console.log('긁어온펑션');
+    console.log(document.cookie);
+}
 
-
-
-
-
-
-
+/////////////////////////////////////////////////////////////////////////////////////////
 $(document).ready(function () {
 	console.log('top_bar.js 시작');
 
@@ -63,7 +68,7 @@ $(document).ready(function () {
 	let userInfo = document.getElementById('userInfo');
 
 	console.log(memberID + "-----------------");
-	if (memberID == "admin") { // if(로그인){}
+	if (memberID == "admin") { // 관리자아이디
 	
 		// << 관리자메뉴
 		a = document.createElement('a');
@@ -112,7 +117,8 @@ $(document).ready(function () {
 		// << 로그아웃
 		a = document.createElement('a');
 		a.setAttribute('class', 'userInfoLinks');
-		a.setAttribute('href', 'index.html');
+		// a.setAttribute('href', 'index.html');
+		a.setAttribute('href', 'javascript:void(0)');
 		a.innerHTML = '로그아웃'
 		a.onclick = function(){
 			logout();
