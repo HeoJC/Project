@@ -25,20 +25,15 @@
 		let id;
 		let params = location.search.split("?")[1];
 		let param = params.split("&");
-<<<<<<< HEAD
 		for(i of param){
 			if(i.split("=")[0] == "productID"){
-=======
 		for (i of param) {
 			if (i.split("=")[0] == "productID") {
->>>>>>> branch 'master' of https://github.com/HeoJC/Project.git
 				id = i.split("=")[1];
 			}
 		}
-<<<<<<< HEAD
 		console.log(id);
-		
-=======
+
 		console.log("상품아이디: " + id);
 		// >>
 
@@ -57,7 +52,6 @@
 
 		}
 
->>>>>>> branch 'master' of https://github.com/HeoJC/Project.git
 		// 제품 상세정보 화면에 뿌리는 서블릿 요청
 		$.ajax({
 			url: "../productServlet",
@@ -143,7 +137,6 @@
 
 		// 장바구니 추가 버튼 function
 		function buy() {
-<<<<<<< HEAD
 			let name = $("#name").html() ;
 			let price = $("#finalprice").html() ;
 			let psize = $("#size option:selected").html() ;
@@ -155,7 +148,6 @@
 			let memberID = '';
 			let memberName = '';
 			let memberEMail = '';
-=======
 			let name = $("#name").html();
 			let price = $("#finalprice").html();
 			let psize = $("#size option:selected").html();
@@ -166,7 +158,6 @@
 			// let memberID = '';	//FIXME: top_bar.js에서 선언
 			// let memberName = '';
 			// let memberEMail = '';
->>>>>>> branch 'master' of https://github.com/HeoJC/Project.git
 			for (let cookies of cookieString) {
 				if (cookies.split("=")[0] == "memberID") {
 					memberID = cookies.split("=")[1];
@@ -181,16 +172,10 @@
 					console.log("이메일: " + memberEMail);
 				}
 			}
-<<<<<<< HEAD
 			
 			console.log(memberID) ;
 			
 			// 로그인 없이, 사이즈선택 없이, 수량선택 없이 장바구니 담기 누르면 안되게 하는거
-=======
-
-			console.log(memberID);
-
->>>>>>> branch 'master' of https://github.com/HeoJC/Project.git
 			if (memberID == null || memberID == "") {
 				alert("로그인 먼저 해주세요");
 				return;
@@ -203,12 +188,8 @@
 				alert("수량을 선택해주세요");
 				return;
 			}
-<<<<<<< HEAD
 			
 			// 장바구니에 담기 servlet 요청
-=======
-
->>>>>>> branch 'master' of https://github.com/HeoJC/Project.git
 			$.ajax({
 				url: "../cartServlet?cmd=add",
 				type: "get",

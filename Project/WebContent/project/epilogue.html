@@ -99,6 +99,8 @@
 									$("<button id='epiloguedelete' onclick='del(" + row.id + ")'/>").html("삭제)")))) ;
 		}	
 		
+		
+		
 		// 등록버튼
 		function input() {
 		let content = $("#epiloguecontent").val() ;
@@ -143,6 +145,10 @@
 				alert("취소하셨습니다") ;	
 				return ;
 			}	
+			
+			$("#updatediv").style.display("block") ;
+			
+			
 		}
 		
 		// 삭제버튼
