@@ -25,11 +25,15 @@
 		let id;
 		let params = location.search.split("?")[1];
 		let param = params.split("&");
+		for(i of param){
+			if(i.split("=")[0] == "productID"){
 		for (i of param) {
 			if (i.split("=")[0] == "productID") {
 				id = i.split("=")[1];
 			}
 		}
+		console.log(id);
+
 		console.log("상품아이디: " + id);
 		// >>
 
@@ -137,6 +141,17 @@
 
 		// 장바구니 추가 버튼 function
 		function buy() {
+			let name = $("#name").html() ;
+			let price = $("#finalprice").html() ;
+			let psize = $("#size option:selected").html() ;
+			let count = $("#countresult").html() ;
+			let deliveryfee = $("#deliveryfee").html() ;
+			let img = $("#imgname").html() ;
+			
+			// 범수씨가 만든 쿠키에서 정보들 받아오는거
+			let memberID = '';
+			let memberName = '';
+			let memberEMail = '';
 			let name = $("#name").html();
 			let price = $("#finalprice").html();
 			let psize = $("#size option:selected").html();
@@ -161,9 +176,9 @@
 					console.log("이메일: " + memberEMail);
 				}
 			}
-
-			console.log(memberID);
-
+			
+			console.log(memberID) ;
+			
 			// 로그인 없이, 사이즈선택 없이, 수량선택 없이 장바구니 담기 누르면 안되게 하는거
 			if (memberID == null || memberID == "") {
 				alert("로그인 먼저 해주세요");
@@ -177,7 +192,7 @@
 				alert("수량을 선택해주세요");
 				return;
 			}
-
+			
 			// 장바구니에 담기 servlet 요청
 			$.ajax({
 				url: "../cartServlet?cmd=add",
@@ -203,6 +218,8 @@
 				}
 			})
 		};
+	}
+}
 	</script>
 
 </body>
