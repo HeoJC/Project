@@ -27,9 +27,6 @@
 		<script>
 		
 		// 범수씨가 만든 쿠키에서 정보 받아오는거
-		let memberID = '';
-		let memberName = '';
-		let memberEMail = '';
 		for (let cookies of cookieString) {
 			if (cookies.split("=")[0] == "memberID") {
 				memberID = cookies.split("=")[1];
