@@ -28,12 +28,12 @@ public class LikeItServlet extends HttpServlet {
 		likeIt.setWhoLikesIt(memberID);
 		
 		LikeItDAO dao = new LikeItDAO();
-		boolean liked = dao.isLikeItAlreadyPressed(likeIt);
-		if(liked) {
-			out.print(1);
-		} else {
-			out.print(-1);
-		}
+//		boolean liked = dao.isLikeItAlreadyPressed(likeIt);
+//		if(liked) {
+//			out.print(1);
+//		} else {
+//			out.print(-1);
+//		}
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)

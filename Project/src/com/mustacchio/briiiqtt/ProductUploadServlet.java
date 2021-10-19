@@ -14,7 +14,6 @@ import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import co.yedam.cart.Product;
-import co.yedam.cart.ProductDAO;
 
 @WebServlet("/ProductUploadServlet")
 public class ProductUploadServlet extends HttpServlet {
