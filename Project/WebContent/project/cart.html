@@ -51,7 +51,7 @@
 
 		// 장바구니 화면에 표시
 		function createDiv(row) {
-			let divRow = $("<div />").addClass("row") ;
+			let divRow = $("<div id=" + row.id + ">").addClass("row") ;
 			$(divRow).append(
 				$("<div />").html("<img width='200px' src='../img2/" + row.img + "'>") ,
 				$("<div />").addClass("article")
@@ -82,14 +82,14 @@
 					.append($("<tr />")
 						.append($("<td />").append($("<h4 />").html("결제금액")) ,
 								$("<h4 id='finalpay'/>").html((row.price * row.count) + row.deliveryfee)))) ,
-				$("<div />").addClass("article").append($("<button id='delBtn' onclick='del()' />").html("삭제"))
+				$("<div />").addClass("article").append($("<button id='delBtn' onclick='del(" + row.id + ")' />").html("삭제"))
 			) ;
 			
 			return divRow ;
 		}
 
+		// 최종금액 구하는 function
 		function finalprice () {
-		// 최종금액 요청하는 ajax
  		$.ajax({
 			url : "../cartServlet?cmd=final" ,
 			type : "get" ,
@@ -117,12 +117,16 @@
 							.append($("<td />").append($("<h4 />").html("최종결제금액 : ")) ,
 									$("<td />").append($("<h4 id='finalfinalpay'/>")))) ,
 					$("<div />").addClass("article")
-						.append($("<button id='buyBtn' onclick='buyBtn()' />").html(" 구매하기").addClass("bi-cart-fill me-1")))) ;
+						.append($("<button id='buyBtn' onclick='buyBtn()' />").html(" 구매하기").addClass("bi-cart-fill me-1")) ,
+					$("<div style='height:1cm'/>").addClass("article") ,
+					$("<div />").addClass("article")
+						.append($('<button id="gobuy" onclick=' + 'location.href="gallery.html" />').html("계속 쇼핑하기"))
+					)) ;
 		
 		
 		// 삭제버튼 function
-		function del() {
-			let id = $("#cartid").html() ;
+		function del(deleteid) {
+			let id = deleteid ;
 			
 			var returnValue = confirm("삭제하시겠습니까?") ;
 			if (returnValue == false) {
@@ -140,7 +144,7 @@
 				dataType : "json" ,
 				success : function (result) {
 					console.log(result) ;
-					$("#delBtn").parent().parent().remove() ;
+					$("#"+deleteid).remove() ;
 					finalprice() ;
 				} ,
 				error : function (reject) {

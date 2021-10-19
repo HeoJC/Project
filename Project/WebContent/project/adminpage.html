@@ -5,7 +5,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Contact</title>
+	<title>admin page</title>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link rel="stylesheet" type="text/css" href="css/mobile.css" media="screen and (max-width : 568px)">
 	<script type="text/javascript" src="js/mobile.js"></script>
@@ -25,6 +25,63 @@
 	</div>
 	<div id="body">
 		<script>
+		
+		// 범수씨가 만든 쿠키에서 정보 받아오는거
+		let memberID = '';
+		let memberName = '';
+		let memberEMail = '';
+		for (let cookies of cookieString) {
+			if (cookies.split("=")[0] == "memberID") {
+				memberID = cookies.split("=")[1];
+				console.log("로그인 아이디: " + memberID);
+			}
+			if (cookies.split("=")[0] == "memberName") {
+				memberName = cookies.split("=")[1];
+				console.log("이름: " + memberName);
+			}
+			if (cookies.split("=")[0] == "memberEMail") {
+				memberEMail = cookies.split("=")[1];
+				console.log("이메일: " + memberEMail);
+			}
+		}
+		
+		// 관리자 로그인 없이 주소치고 들어오면 홈페이지로 돌아가도록 함
+		if (memberID == "admin") {
+			adminpage() ;
+		} else {
+			alert("관리자 전용 페이지입니다.")
+			location.href="index.html"
+		}
+
+		// 회원 목록 보여주는 function
+		function memberlist() {
+			$.ajax({
+				url : "../memberServlet" ,
+				type : "get" ,
+				dataType : "json" ,
+				success : function (result) {
+					console.log(result) ;
+					for (let row of result) {
+						if ($("#membertd").html() == row.memberID) {
+							return ;
+						}
+						$("#memberlisttable").append($("<tr id='memberlisttr'/>")
+								.append($("<td class='memberlisttitle'/>").html("아이디 : ") ,
+										$("<td id='membertd' class='memberlistcontents'/>").html(row.memberID) ,
+										$("<td class='memberlisttitle'/>").html("이름 : ") ,
+										$("<td class='memberlistcontents'/>").html(row.memberName) ,
+										$("<td class='memberlisttitle'/>").html("이메일 : ") ,
+										$("<td class='memberlistcontents'/>").html(row.memberEMail)))
+					}
+				} ,
+				error : function (reject) {
+					console.log(reject) ;
+				}
+			}) ;
+		}
+		
+		// 관리자화면 뿌려주는 function
+		function adminpage () {
 			$("#body").append(
 				$("<h1 />").append($("<span />").html("ADMIN PAGE")) ,
 				$("<div />").addClass("article").append($("<img width='300px' src='../img2/admin.png'>")) ,
@@ -39,35 +96,11 @@
 				.append($("<table style='margin: auto;'/>")	
 					.append($("<tr />")			
 						.append($("<td />").append($("<h4 style='margin:0 auto;'/>").html("상품추가")) , 
-								$("<td />").append($("<button id='productInputBtn' onclick='' />'").addClass("bi-plus me-1")))))
+								$("<td />").append($('<button id="productInputBtn" onclick=' + 'location.href="productUpload.html" />').addClass("bi-plus me-1")))))
 			) ;
-
-			function memberlist() {
-				$.ajax({
-					url : "../memberServlet" ,
-					type : "get" ,
-					dataType : "json" ,
-					success : function (result) {
-						console.log(result) ;
-						for (let row of result) {
-							if ($("#membertd").html() == row.memberID) {
-								return ;
-							}
-							$("#memberlisttable").append($("<tr id='memberlisttr'/>")
-								.append($("<td />").html(" 아이디 : ") ,
-										$("<td id='membertd'/>").html(row.memberID) ,
-										$("<td />").html(" / 이름 : ") ,
-										$("<td />").html(row.memberName) ,
-										$("<td />").html(" / 이메일 : ") ,
-										$("<td />").html(row.memberEMail)))
-						}
-					} ,
-					error : function (reject) {
-						console.log(reject) ;
-					}
-				}) ;
-			}
-			
+		
+		}
+		
 		</script>
 	</div>
 	<div id="footer">

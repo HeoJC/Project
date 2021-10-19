@@ -140,7 +140,7 @@ input#countbutton1 , input#countbutton2 {
 	font-family: "Arial Black", Gadget, sans-serif;
 	font-size: 15px;
 }
-button#buyBtn , #delBtn {
+button#buyBtn , #delBtn , #gobuy , #epilogueinput{
 	background: #252525;
 	color: #fff;
 	display: inline-block;
@@ -250,7 +250,57 @@ div#message {
 }
 #memberlisttable {
 	margin: 0 auto;
-	width: 700px;
+	width: 1000px;
+}
+#memberlisttr td {
+	margin: 0 auto;
+	font-size: 15px;
+	text-align: left;
+	word-break: break-all
+}
+.memberlisttitle{
+	width:5cm ;
+}
+.memberlistcontents {
+	width:20cm ;
+	text-align: center ;
+}
+#epilogueno , #epiloguename {
+	width:5cm ;
+}
+#epiloguecontent {
+	width:18cm ;
+	text-align: center ;
+}
+#epiloguetable>tr>.epilogueidtd , #epiloguetable>tr>.epiloguenametd {
+	width:5cm ;
+	text-align: center ;
+}
+#epiloguetable>tr>.epiloguecontenttd {
+	width:18cm ;
+	text-align: center ;
+}
+#epiloguecontent {
+	height: 1cm ;
+}
+#body>table>tr>td>h4 {
+	color: #000000;
+	display: inline-block;
+	font-family: "Arial Black", Gadget, sans-serif;
+	font-size: 25px;
+	font-weight: normal;
+	width: 8cm; 
+}
+#epiloguetitle {
+	background: #252525;
+	color: #fff;
+	display: inline;
+	font-family: poller_oneregular;
+	font-size: 40px;
+	font-weight: normal;
+	margin: 0;
+	padding: 0;
+	text-transform: uppercase;
 }
 /*
 -------------------------------------------------------------------------------------------
