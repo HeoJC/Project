@@ -5,15 +5,13 @@
 
 
 let cookieString = document.cookie.split("; "); // {cookieString[0](키=밸류); cookieString[1](키=밸류); ~~...;}
-
+let memberID = '';
+let memberName = '';
+let memberEMail = '';
 function logout() {
 	console.log(cookieString)
 	document.cookie = 'memberID=null; expires=Thu, 18 Dec 2013 12:00:00 GMT';
-	console.log(document.cookie);
-	console.log('안녕쿠키');
-
 	document.cookie = "username=John Doe; expires=Thu, 18 Dec 2013 12:00:00 UTC";
-	console.log(document.cookie);
 	document.cookie = "username=John Smith; expires=Thu, 18 Dec 2013 12:00:00 UTC; path=/";
 	console.log(document.cookie);
 
@@ -44,9 +42,9 @@ $(document).ready(function () {
 	console.log('top_bar.js 시작');
 
 	//쿠키값 변수로 가져오기
-	let memberID = '';
-	let memberName = '';
-	let memberEMail = '';
+	// let memberID = '';    // 펑션밖으로 옮김
+	// let memberName = '';
+	// let memberEMail = '';
 	for (let cookies of cookieString) {
 		if (cookies.split("=")[0] == "memberID") {
 			memberID = cookies.split("=")[1];

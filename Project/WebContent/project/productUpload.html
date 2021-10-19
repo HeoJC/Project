@@ -8,37 +8,66 @@
 	<title>Contact - Mustache Enthusiast</title>
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link rel="stylesheet" type="text/css" href="css/mobile.css" media="screen and (max-width : 568px)">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<script type="text/javascript" src="js/mobile.js"></script>
 	<script src="js/resetInput.js"></script>
 	<script src="js/top_bar.js"></script>
 </head>
 <script>
-	function uploadButtonPressed() {
+	function uploadButtonPressed(ev) {
 		console.log('등록버튼눌ㄹ미');
-		let name = document.loginForm.name.value;
-		let brand = document.loginForm.brand.value;
-		let price = document.loginForm.price.value;
-		// let filename = document.loginForm.filename.value;
-		if (name == "" || name == "product name") { //FIXME: UPPER? LOWER?
-			window.alert("상품이름");
-			document.loginForm.memberID.focus();
-			return;
-		}
-		if (brand == "" || brand == "brand") { 
-			window.alert("브랜드");
-			document.loginForm.memberPW.focus();
-			return;
-		}
-		if (price == "" || price == "price") { //FIXME: 조건 바꾸기. 문자열이랑 정수랑 비교?
-			window.alert("가격");
-			document.loginForm.memberPW.focus();
-			return;
-		}
-		let xhr = new XMLHttpRequest();
-		xhr.open('');
-		xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-		xhr.send();
-		xhr.onload = function () {}
+		// let name = document.loginForm.name.value;
+		// let brand = document.loginForm.brand.value;
+		// let price = document.loginForm.price.value;
+		// // let filename = document.loginForm.filename.value;
+		// if (name == "" || name == "product name") {
+		// 	window.alert("상품이름");
+		// 	document.loginForm.memberID.focus();
+		// 	return;
+		// }
+		// if (brand == "" || brand == "brand") { 
+		// 	window.alert("브랜드");
+		// 	document.loginForm.memberPW.focus();
+		// 	return;
+		// }
+		// if (price == "" || price == "price") { //FIXME: 조건 바꾸기. 문자열이랑 정수랑 비교?
+		// 	window.alert("가격");
+		// 	document.loginForm.memberPW.focus();
+		// 	return;
+		// }
+		// let xhr = new XMLHttpRequest();
+		// xhr.setcontet
+		// xhr.open('../ProductUploadServlet');
+		// xhr.setRequestHeader("Content-type", "false");
+		// xhr.send();
+		// xhr.onload = function () {}\
+
+		ev.preventDefault();
+			let frm = document.getElementById('frm');
+			let data = new FormData(frm);
+
+			$.ajax({
+				url: '../ProductUploadServlet',
+				type: $('#frm').attr('method'),
+				data: data,
+				processData: false,
+				contentType: false,
+				dataType: 'json',
+				success: function (result) {
+					alert('succexxxxx');
+					$('#show').append(createDiv(result));
+					console.log(result);
+
+
+					// 입력했던 값을 지우도록
+					$('#frm>input').not('[type="submit"]').val('');
+
+
+				},
+				error: function () {
+					alert('faillliillillil');
+				}
+			});
 	}
 </script>
 
@@ -56,13 +85,13 @@
 	</div>
 	<div id="body">
 		<h1><span>product upload</span></h1>
-		<form action="">
+		<form id="frm" method="POST" enctype="multipart/form-data" onsubmit="uploadButtonPressed(event)">
 			<input type="text" name="name" id="" value="product name">
 			<input type="text" name="brand" id="" value="brand">
-			<input type="text" name="price" id="" value="price">
-			<input type="text" name="filename" id="" value="filename">
-			<button>사진등록(미구현)</button><br>
-			<br><button type="button" onclick="uploadButtonPressed()" id="send">판다 이것 !</button>
+			<input type="text" name="originprice" id="" value="originprice">
+			<input type="text" name="offprice" id="" value="offprice">
+			<input type="file" name="file">
+			<br><input type="submit" onclick="uploadButtonPressed()" id="send" value="판다 이것 !"></input>
 		</form>
 	</div>
 	<div id="footer">
