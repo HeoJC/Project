@@ -3,7 +3,7 @@ drop table product ;
 -------------------------------------------------------------
 
 create table product (  
-id varchar2(100) ,
+id varchar2(100)  primary key,
 brand varchar2(100) ,
 name varchar2(100) ,
 originprice number ,
