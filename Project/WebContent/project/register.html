@@ -6,6 +6,8 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Register - Mustache Enthusiast</title>
+	<link rel="shortcut icon" href="favicon.ico">
+	<link rel="icon" href="favicon.ico">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link rel="stylesheet" type="text/css" href="css/mobile.css" media="screen and (max-width : 568px)">
 	<script type="text/javascript" src="js/mobile.js"></script>
@@ -20,22 +22,22 @@
 		let memberPW = document.regForm.memberPW.value;
 		let memberName = document.regForm.memberName.value;
 		let memberEMail = document.regForm.memberEMail.value;
-		if (memberID == "" || memberID == "id") {
+		if (memberID == "" || memberID == "ID") {
 			window.alert("등록할 ID를 입력하십시오.");
 			document.loginForm.memberID.focus();
 			return;
 		}
-		if (memberPW == "" || memberPW == "password") {
+		if (memberPW == "" || memberPW == "PASSWORD") {
 			window.alert("등록할 PASSWORD를 입력하십시오.");
 			document.loginForm.memberPW.focus();
 			return;
 		}
-		if (memberName == "" || memberName == "name") {
+		if (memberName == "" || memberName == "NAME") {
 			window.alert("당신의 이름을 입력하십시오.");
 			document.loginForm.memberPW.focus();
 			return;
 		}
-		if (memberEMail == "" || memberEMail == "email") {
+		if (memberEMail == "" || memberEMail == "EMAIL") {
 			window.alert("등록할 EMAIL을 입력하십시오.");
 			document.loginForm.memberPW.focus();
 			return;

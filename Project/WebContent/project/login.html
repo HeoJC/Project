@@ -6,6 +6,8 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Login - Mustache Enthusiast</title>
+	<link rel="shortcut icon" href="favicon.ico">
+	<link rel="icon" href="favicon.ico">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 	<link rel="stylesheet" type="text/css" href="css/mobile.css" media="screen and (max-width : 568px)">
 	<script type="text/javascript" src="js/mobile.js"></script>
@@ -20,12 +22,12 @@
 		console.log('로그인버튼눌림');
 		let memberID = document.loginForm.memberID.value;
 		let memberPW = document.loginForm.memberPW.value;
-		if (memberID == "" || memberID == "id") {
+		if (memberID == "" || memberID == "ID") {
 			window.alert("ID를 입력하십시오.");
 			document.loginForm.memberID.focus();
 			return;
 		}
-		if (memberPW == "" || memberPW == "password") {
+		if (memberPW == "" || memberPW == "PASSWORD") {
 			window.alert("PASSWORD를 입력하십시오.");
 			document.loginForm.memberPW.focus();
 			return;
