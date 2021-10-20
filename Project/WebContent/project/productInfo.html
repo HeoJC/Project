@@ -36,7 +36,7 @@
 
       // 좋아요
       function likeIt() {
-         console.log("likeit function start) 로그인아이디:" + memberID);
+         console.log("likeit function start) 로그인아이디:" + memberID + "상품아이디: " + id);
          let xhr = new XMLHttpRequest();
          xhr.open("post", "../LikeItServlet");
          xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
@@ -44,9 +44,13 @@
          xhr.onload = function () {
             if (xhr.responseText == 1) {
                console.log('좋아용');
-            } else if (xhr.responseText == -1) {
+               let likes = "♥ " +(document.getElementById('like').innerHTML.substring(1)*1+1);
+               document.getElementById('like').innerHTML = likes;
+            } else if (xhr.responseText == 0) {
                console.log('시러용');
-            } else {
+               let likes = "♥ " +(document.getElementById('like').innerHTML.substring(1)*1-1);
+               document.getElementById('like').innerHTML= likes
+            } else if (xhr.responseText == -1){
                console.log('뭔지모르는데 일단 에러')
             }
          }
@@ -77,10 +81,7 @@
             $("<h1 />").append($("<span id='name'/>").html(row.name)),
             $("<div />").html("<img width='500px' src='../img2/" + row.filename + "'>"),
             $("<div id='imgname'/>").html(row.filename).hide(),
-            //TODO: like it 수정 전 $("<div id='heart'/>").addClass("article").append($("<h4 id='like'/>").html("♥" + row.likeit)) ,
-            $("<div id='heart'/>").click(function () {
-               likeIt()
-            }).addClass("article").append($("<h4 id='like'/>").html("♥" + row.likeit)), // 수정 후
+            $("<div id='heart'/>").addClass("article").append($("<h4 id='like'/>").click(function(){likeIt()}).html("♥ " + row.likeit)) ,
             $("<div />").addClass("article")
             .append($("<table style='margin: auto;'/>")
                .append($("<tr />")

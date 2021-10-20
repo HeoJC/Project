@@ -1,13 +1,13 @@
 package com.mustacchio.briiiqtt;
 
 public class LikeIt {
-	private String id;
+	private String productID;
 	private String whoLikesIt;
-	public String getId() {
-		return id;
+	public String getProductID() {
+		return productID;
 	}
-	public void setId(String id) {
-		this.id = id;
+	public void setProductID(String productID) {
+		this.productID = productID;
 	}
 	public String getWhoLikesIt() {
 		return whoLikesIt;
