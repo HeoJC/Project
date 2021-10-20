@@ -21,23 +21,26 @@
 		</a>
 		<ul id="navigation">
 			<li>
+				<a href="index.html">home</a>
+			</li>
+			<li>
 				<a href="gallery.html">gallery</a>
 			</li>
 			<li class="selected">
+				<a href="contact.html">epilogue</a>
+			</li>
+			<li>
 				<a href="contact.html">contact</a>
 			</li>
 		</ul>
 	</div>
 	<div id="up" style="text-align: center; height:3cm;"></div>
-	<div id="body">	</div>
-	<div id="down" style='height:20cm;'></div>
+	<div id="body" style="text-align: center;">	</div>
+	<div id="down" style='text-align: center; height:17cm;'></div>
 		
 	<script>
 	
 		// 범수씨가 만든 쿠키에서 정보들 받아오는거
-		let memberID = '';
-		let memberName = '';
-		let memberEMail = '';
 		for (let cookies of cookieString) {
 			if (cookies.split("=")[0] == "memberID") {
 				memberID = cookies.split("=")[1];
@@ -54,26 +57,31 @@
 		}
 		
 
+		// 제목
+		$("#up").append($("<h1 />").append($("<span id='epiloguetitle'/>").html("이용후기"))) ;
 		
-		$("#up").append($("<h1 />").append($("<span id='epiloguetitle'/>").html("구매후기")),
-				$("<button id='epilogueinput' onclick='input()'/>").html("입력")) ;
-		
+		// 입력창
 		$("#body").append($("<table id='epiloguetablehead' style='margin: auto;'/>")
 					.append($("<tr />")
 						.append($("<td />")
-							.append($("<h4 id='writename'/>").html("작성자 : " + memberID)) ,
+							.append($("<h4 id='writename' style='vertical-align: middle;'/>").html("작성자 : " + memberID)) ,
 						$("<td />")
-							.append($("<input type='text' id='epiloguecontent' style='font-size:20px'/>"))))) ,
-		$("#body").append($("<table class='epiloguetable' style='margin: auto; font-size:20px; border: 1px solid black'/>")
+							.append($("<input type='text' id='epiloguecontent' style='font-size:20px; vertical-align: middle;'/>")) ,
+						$("<td />")
+							.append($("<button id='epilogueinput' style='vertical-align: middle;' onclick='input()'/>").html("입력"))))) ,
+		// 제목줄
+		$("#body").append($("<table class='epiloguetitletable' style='margin: auto; font-size:20px; border: 1px solid black'/>")
 			.append($("<tr />")
 				.append($("<th id='epilogueno'/>").html("번호") ,
 				$("<th id='epiloguename'/>").html("작성자") ,
 				$("<th id='epiloguecontent'/>").html("내용") ,
 				$("<th id='epiloguebutton'/>").html("수정/삭제")))) ;
-		
+		// 내용줄		
 		$("#down").append($("<table id='epiloguetable' style='margin: auto; font-size:20px;'/>"))
+		
 
-		// 방명록 요청 ajax
+		
+		// 화면요청 ajax
 		$.ajax({
 			url : "../EpilogueServlet?cmd=list" ,
 			type : "get" ,
@@ -88,6 +96,7 @@
 			}
 		}) ;
 		
+		// 화면에 뿌려주는 function
 		function createDiv(row) {
 			$("#epiloguetable")
 				.append($("<tr id=" + row.id + " name = " + row.name + ">")
@@ -97,11 +106,20 @@
 						$("<td />")
 							.append($("<button id='epilogueupdate' onclick='update("+ row.id + ")'/>").html("수정"),
 									$("<button id='epiloguedelete' onclick='del(" + row.id + ")'/>").html("삭제)")))) ;
+		
+			$("#epiloguetablehead")
+			.after(($("<table id='updateform' style='width: 1070px; margin: auto;'/>")
+					.append($("<tr />")
+						.append($("<td id='update'/>")
+							.append($("<h4 style='vertical-align: middle;'/>").html("수정내용입력")) ,
+						$("<td />")
+							.append($("<input type='text' id='updateinput' style='font-size:20px; vertical-align: middle;'>")), 
+						$("<td />")
+							.append($("<button id='updateBtn' style='vertical-align: middle;' onclick='change(" + row.id + ")'/>").html("변경") ,
+							$("<button id='cancelBtn' style='vertical-align: middle;' onclick='cancel()'/>").html("취소")))))) 
 		}	
 		
-		
-		
-		// 등록버튼
+		// 등록버튼 function
 		function input() {
 		let content = $("#epiloguecontent").val() ;
 		console.log(content) ;
@@ -114,6 +132,7 @@
 				return ;
 			}
 			
+		// 등록요청 ajax
 		$.ajax({
 			url : "../EpilogueServlet?cmd=add" ,
 			type : "get" ,
@@ -132,55 +151,141 @@
 		}) ;
 		}
 		
-		// 수정버튼
-		function update(rowid) {
-			let name = memberID ;
+		// 변경 function
+		function change(rowid) {
+			
 			let id = rowid ;
-			if ($("#"+rowid).attr("name") != memberID || $("#"+rowid).attr("name") != "admin") {
-				alert("본인 글이거나 관리자인 경우에만 수정이 가능합니다.")
-				return ;
-			}
-			var returnValue = confirm("수정하시겠습니까?") ;
-			if (returnValue == false) {
-				alert("취소하셨습니다") ;	
-				return ;
-			}	
-			
-			$("#updatediv").style.display("block") ;
-			
-			
-		}
-		
-		// 삭제버튼
-		function del(rowid) {
-			let name = memberID ;
-			let id = rowid ;
-			if ($("#"+rowid).attr("name") != memberID || $("#"+rowid).attr("name") != "admin") {
-				alert("본인 글이거나 관리자인 경우에만 삭제가 가능합니다.")
-				return ;
-			}
-			var returnValue = confirm("삭제하시겠습니까?") ;
-			if (returnValue == false) {
-				alert("취소하셨습니다") ;	
-				return ;
-			}
-			alert("삭제하셨습니다") ;
+			let content = $("#updateinput").val() ;
 			
 			$.ajax({
-				url : "../EpilogueServlet?cmd=del" ,
+				url : "../EpilogueServlet?cmd=mod" ,
 				type : "get" ,
 				data : {
-					id : id
+					id : id ,
+					content : content
 				} ,
 				dataType : "json" ,
 				success : function (result) {
 					console.log(result) ;
-					$("#"+rowid).remove() ;
+					location.reload() ;
 				} ,
 				error : function (reject) {
 					console.log(reject) ;
 				}
 			}) ;
+		}
+		
+		// 취소 function
+		function cancel() {
+			location.reload() ;
+		}
+			
+		// 수정버튼 function
+		function update(rowid) {
+			
+			let name = memberID ;
+			let id = rowid ;
+			
+			// 본인글이면 수정가능
+			if ($("#"+rowid).attr("name") == memberID) {
+				
+				// 수정할건지 물어보기
+				var returnValue = confirm("수정하시겠습니까?") ;
+				if (returnValue == false) {
+					alert("취소하셨습니다") ;	
+					return ;
+				}
+				
+				// 본인글 맞으면 수정창 보여주기
+				$("#updateform").css('display','block') ;
+				
+			// 어드민이면 전부가능
+			} else if (memberID == "admin") {
+				
+				var returnValue = confirm("수정하시겠습니까?") ;
+				if (returnValue == false) {
+					alert("취소하셨습니다") ;	
+					return ;
+				}
+				
+				// 어드민 맞으면 수정창 보여주기
+				$("#updateform").css('display','block') ;								
+			
+			// 본인글도 아니고 어드민도 아닐경우 수정 불가능
+			} else {
+				alert("본인 글이거나 관리자인 경우에만 수정이 가능합니다.")
+				return ;
+			}			
+			
+		}
+		
+		// 삭제버튼
+		function del(rowid) {
+			
+			let name = memberID ;
+			let id = rowid ;
+			
+			// 본인글이면 삭제가능
+			if ($("#"+rowid).attr("name") == memberID) {
+				
+				// 삭제할건지 물어보기
+				var returnValue = confirm("삭제하시겠습니까?") ;
+				if (returnValue == false) {
+					alert("취소하셨습니다") ;	
+					return ;
+				}
+				alert("삭제하셨습니다") ;
+				
+				// 삭제요청 ajax
+				$.ajax({
+					url : "../EpilogueServlet?cmd=del" ,
+					type : "get" ,
+					data : {
+						id : id
+					} ,
+					dataType : "json" ,
+					success : function (result) {
+						console.log(result) ;
+						$("#"+rowid).remove() ;
+					} ,
+					error : function (reject) {
+						console.log(reject) ;
+					}
+				}) ;
+			
+			// 어드민이면 삭제가능
+			} else if (memberID == "admin") {
+				
+				var returnValue = confirm("삭제하시겠습니까?") ;
+				if (returnValue == false) {
+					alert("취소하셨습니다") ;	
+					return ;
+				}
+				alert("삭제하셨습니다") ;
+				
+				// 삭제요청 ajax
+				$.ajax({
+					url : "../EpilogueServlet?cmd=del" ,
+					type : "get" ,
+					data : {
+						id : id
+					} ,
+					dataType : "json" ,
+					success : function (result) {
+						console.log(result) ;
+						$("#"+rowid).remove() ;
+					} ,
+					error : function (reject) {
+						console.log(reject) ;
+					}
+				}) ;
+			
+				// 본인글도 아니고 어드민도 아닐경우 삭제 불가능
+			} else {
+				alert("본인 글이거나 관리자인 경우에만 삭제가 가능합니다.")
+				return ;
+			}
+			
 		}
 			
 	</script>
@@ -195,7 +300,7 @@
 					<a href="https://www.facebook.com/" id="facebook">facebook</a>
 				</li>
 				<li>
-					<a href="https://www.google.com/" id="google">google</a>
+					<a href="https://www.google.com/" id="googleplus">google</a>
 				</li>
 			</ul>
 		</div>

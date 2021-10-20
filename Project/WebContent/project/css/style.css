@@ -139,7 +139,7 @@ input#countbutton1 , input#countbutton2 {
 	font-family: "Arial Black", Gadget, sans-serif;
 	font-size: 15px;
 }
-button#buyBtn , #delBtn , #gobuy , #epilogueinput{
+button#buyBtn , #delBtn , #gobuy , #epilogueinput ,#updateBtn , #cancelBtn , #gowrite {
 	background: #252525;
 	color: #fff;
 	display: inline-block;
@@ -264,10 +264,10 @@ div#message {
 	width:20cm ;
 	text-align: center ;
 }
-#epilogueno , #epiloguename {
+#epilogueno , #epiloguename , #epiloguebutton {
 	width:5cm ;
 }
-#epiloguecontent {
+#epiloguecontent , #updateinput {
 	width:18cm ;
 	text-align: center ;
 }
@@ -290,6 +290,14 @@ div#message {
 	font-weight: normal;
 	width: 8cm; 
 }
+#updateform>table>tr>td>h4 {
+	color: #000000;
+	display: inline-block;
+	font-family: "Arial Black", Gadget, sans-serif;
+	font-size: 25px;
+	font-weight: normal;
+	width: 8cm; 
+}
 #epiloguetitle {
 	background: #252525;
 	color: #fff;
@@ -300,6 +308,10 @@ div#message {
 	margin: 0;
 	padding: 0;
 	text-transform: uppercase;
+}
+#updateform {
+	display: none ;
+	justify-content: center ;
 }
 /*
 -------------------------------------------------------------------------------------------

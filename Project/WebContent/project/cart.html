@@ -17,7 +17,20 @@
 		<a href="index.html" class="logo">
 			<img src="images/logo.jpg" alt="">
 		</a>
-		<ul id="navigation"></ul>
+		<ul id="navigation">
+			<li>
+				<a href="index.html">home</a>
+			</li>
+			<li>
+				<a href="gallery.html">gallery</a>
+			</li>
+			<li>
+				<a href="epilogue.html">epilogue</a>
+			</li>
+			<li>
+				<a href="contact.html">contact</a>
+			</li>
+		</ul>
 	</div>
 	<div id="first">
 	</div>
@@ -31,9 +44,9 @@
 		// 장바구니 타이틀 표시
 		$("#first").append($("<div />").addClass("row")
 				.append($("<dic />").addClass("article")
-						.append($("<h4 />").html(" 장바구니").addClass("bi-cart-fill me-1")))) ;	
+						.append($("<h4 />").html("  장바구니").addClass("bi-cart-fill me-1")))) ;	
 		
-		// 장바구니 데이터베이스 요청 ajax
+		// 장바구니 요청 ajax
 		$.ajax({
 			url : "../cartServlet?cmd=list" ,
 			type : "get" ,
@@ -88,7 +101,7 @@
 			return divRow ;
 		}
 
-		// 최종금액 구하는 function
+		// 최종금액 function
 		function finalprice () {
  		$.ajax({
 			url : "../cartServlet?cmd=final" ,
@@ -117,11 +130,14 @@
 							.append($("<td />").append($("<h4 />").html("최종결제금액 : ")) ,
 									$("<td />").append($("<h4 id='finalfinalpay'/>")))) ,
 					$("<div />").addClass("article")
-						.append($("<button id='buyBtn' onclick='buyBtn()' />").html(" 구매하기").addClass("bi-cart-fill me-1")) ,
+						.append($("<button id='buyBtn' onclick='buyBtn()' />").html("  구매하기").addClass("bi-currency-dollar")) ,
 					$("<div style='height:1cm'/>").addClass("article") ,
 					$("<div />").addClass("article")
-						.append($('<button id="gobuy" onclick=' + 'location.href="gallery.html" />').html("계속 쇼핑하기"))
-					)) ;
+						.append($('<button id="gobuy" onclick=' + 'location.href="gallery.html" />')
+								.html("  계속 쇼핑하기").addClass("bi-cart-fill me-1") ,
+						$('<button id="gowrite" onclick=' + 'location.href="epilogue.html" />')
+								.html("  이용후기 남기기").addClass("bi-pencil-fill")
+					))) ;
 		
 		
 		// 삭제버튼 function
@@ -189,7 +205,7 @@
 					<a href="https://www.facebook.com/" id="facebook">facebook</a>
 				</li>
 				<li>
-					<a href="https://www.google.com/" id="google">google</a>
+					<a href="https://www.google.com/" id="googleplus">google</a>
 				</li>
 			</ul>
 		</div>
