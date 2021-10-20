@@ -8,34 +8,37 @@ let cookieString = document.cookie.split("; "); // {cookieString[0](키=밸류);
 let memberID = '';
 let memberName = '';
 let memberEMail = '';
+
 function logout() {
 	console.log(cookieString)
-	document.cookie = 'memberID=null; expires=Thu, 18 Dec 2013 12:00:00 GMT';
-	document.cookie = "username=John Doe; expires=Thu, 18 Dec 2013 12:00:00 UTC";
-	document.cookie = "username=John Smith; expires=Thu, 18 Dec 2013 12:00:00 UTC; path=/";
-	console.log(document.cookie);
+	document.cookie = 'memberID=; expires=Thu, 18 Dec 2013 12:00:00 GMT';
+	document.cookie = 'memberName=; expires=Thu, 18 Dec 2013 12:00:00 GMT';
+	document.cookie = 'memberEMail=; expires=Thu, 18 Dec 2013 12:00:00 GMT';
+	document.location.href = "index.html";
+	// document.cookie = "username=John Doe; expires=Thu, 18 Dec 2013 12:00:00 UTC";
+	// document.cookie = "username=John Smith; expires=Thu, 18 Dec 2013 12:00:00 UTC; path=/";
+	// console.log(document.cookie);
 
-	setCookie('memberID', null, 1)
+	// setCookie('memberID', null, 1)
 	
-	for (let cookies of cookieString) {
-		for (let i of cookies) {
-			let date = new Date();
-			date.setDate(date.getDate() - 100);
-			document.cookie = `${cookies.split("=")[0]}=;Expires=${date.toUTCString()}`
-		}
-		// alert('정상적으로 로그아웃 되었습니다.')
+	// for (let cookies of cookieString) {
+	// 	for (let i of cookies) {
+	// 		let date = new Date();
+	// 		date.setDate(date.getDate() - 100);
+	// 		document.cookie = `${cookies.split("=")[0]}=;Expires=${date.toUTCString()}`
+	// 	}
+		alert('정상적으로 로그아웃 되었습니다.')
+		// }
 		console.log('로그아웃ㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇㅁㄴㅇ람ㅇㄴ럶ㄴ이ㅏㅓㅁㄹㄴㅇ')
-
-	}
 }
 
-function setCookie(key, value, expiredays) {
-    var todayDate = new Date();
-    todayDate.setDate(todayDate.getDate() + expiredays);
-    document.cookie = key + "=" + escape(value) + "; path=/; expires=" + todayDate.toGMTString() + ";"
-    console.log('긁어온펑션');
-    console.log(document.cookie);
-}
+// function setCookie(key, value, expiredays) {
+//     var todayDate = new Date();
+//     todayDate.setDate(todayDate.getDate() + expiredays);
+//     document.cookie = key + "=" + escape(value) + "; path=/; expires=" + todayDate.toGMTString() + ";"
+//     console.log('긁어온펑션');
+//     console.log(document.cookie);
+// }
 
 /////////////////////////////////////////////////////////////////////////////////////////
 $(document).ready(function () {

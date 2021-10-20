@@ -33,17 +33,22 @@
 		let xhr = new XMLHttpRequest();
 		xhr.open('post', '../LoginServlet');
 		xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-		xhr.send('memberID=' + memberID + '&memberPW=' + memberPW);
+		xhr.send('cmd=login;&memberID=' + memberID + '&memberPW=' + memberPW);
 		xhr.onload = function () {
 			console.log('request onload');
 			console.log(document.cookie);
 			if(xhr.responseText == 0){
 				console.log('쿼리 결과 없음');
 				alert('없는 아이디이거나 비밀번호가 틀렸습니다.')
-			} else if(xhr.responseText == 1){
-				console.log('있긴있음');
+			} else {
+				console.log(xhr.responseText);
+				
+				document.cookie = 'memberID='+xhr.responseText.split("&")[0];
+				document.cookie = 'memberName='+xhr.responseText.split("&")[1];
+				document.cookie = 'memberEMail='+xhr.responseText.split("&")[2];
 				document.location.href = "index.html";
 			}
+			console.log(document.cookie);
 		}
 	}
 </script>
