@@ -17,23 +17,20 @@ public class LikeItServlet extends HttpServlet {
 		super();
 	}
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
-		
+
 		String memberID = request.getParameter("memberID");
 		String productID = request.getParameter("productID");
-		
+
 		LikeIt likeIt = new LikeIt();
-		likeIt.setId(productID);
+		likeIt.setProductID(productID);
 		likeIt.setWhoLikesIt(memberID);
-		
+
 		LikeItDAO dao = new LikeItDAO();
-//		boolean liked = dao.isLikeItAlreadyPressed(likeIt);
-//		if(liked) {
-//			out.print(1);
-//		} else {
-//			out.print(-1);
-//		}
+		int r = dao.isLikeItAlreadyPressed(likeIt);
+		out.println(r);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
