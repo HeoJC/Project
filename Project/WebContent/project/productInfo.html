@@ -52,7 +52,7 @@
          }
       }
 
-      // 제품 상세정보 화면에 뿌리는 서블릿 요청
+      // 화면요청 ajax
       $.ajax({
          url: "../productServlet",
          type: "get",
@@ -69,7 +69,7 @@
          }
       });
 
-      // 데이터베이스에 있는 제품정보 불러와서 화면에 뿌려주기
+      // 제품정보 화면에 뿌려주기
       function createDiv(row) {
          let divRow = $("<div />").addClass("row");
          $(divRow).append(
@@ -117,7 +117,7 @@
          console.log(parent);
       }
 
-      // 구매수량 버튼 function
+      // 구매수량버튼 function
       function count(type) {
          const resultElement = document.getElementById("countresult");
 
@@ -135,7 +135,7 @@
          resultElement.innerText = number;
       }
 
-      // 장바구니 추가 버튼 function
+      // 장바구니 추가 function
       function buy() {
          let name = $("#name").html();
          let price = $("#finalprice").html();
@@ -144,9 +144,6 @@
          let deliveryfee = $("#deliveryfee").html();
          let img = $("#imgname").html();
 
-         // let memberID = '';   //FIXME: top_bar.js에서 선언
-         // let memberName = '';
-         // let memberEMail = '';
          for (let cookies of cookieString) {
             if (cookies.split("=")[0] == "memberID") {
                memberID = cookies.split("=")[1];
@@ -178,7 +175,7 @@
             return;
          }
 
-         // 장바구니에 담기 servlet 요청
+         // 장바구니에 담기 요청 ajax
          $.ajax({
             url: "../cartServlet?cmd=add",
             type: "get",
