@@ -105,19 +105,25 @@
 						$("<td class='epiloguecontenttd'/>").html(row.content) ,
 						$("<td />")
 							.append($("<button id='epilogueupdate' onclick='update("+ row.id + ")'/>").html("수정"),
-									$("<button id='epiloguedelete' onclick='del(" + row.id + ")'/>").html("삭제)")))) ;
+									$("<button id='epiloguedelete' onclick='del(" + row.id + ")'/>").html("삭제")))) ;
+		}
 		
-			$("#epiloguetablehead")
-			.after(($("<table id='updateform' style='width: 1070px; margin: auto;'/>")
-					.append($("<tr />")
-						.append($("<td id='update'/>")
-							.append($("<h4 style='vertical-align: middle;'/>").html("수정내용입력")) ,
-						$("<td />")
-							.append($("<input type='text' id='updateinput' style='font-size:20px; vertical-align: middle;'>")), 
-						$("<td />")
-							.append($("<button id='updateBtn' style='vertical-align: middle;' onclick='change(" + row.id + ")'/>").html("변경") ,
-							$("<button id='cancelBtn' style='vertical-align: middle;' onclick='cancel()'/>").html("취소")))))) 
+		function inputform() {
+		$("#epiloguetablehead")
+		.after(($("<table id='updateform' style='width: 1070px; margin: auto;'/>")
+				.append($("<tr />")
+					.append($("<td id='update'/>")
+						.append($("<h4 style='vertical-align: middle;'/>").html("수정내용입력")) ,
+					$("<td />")
+						.append($("<input type='text' id='updateinput' style='font-size:20px; vertical-align: middle;'>")), 
+					$("<td />")
+						.append($("<button id='updateBtn' style='vertical-align: middle;' onclick='change()'/>").html("변경") ,
+						$("<button id='cancelBtn' style='vertical-align: middle;' onclick='cancel()'/>").html("취소"))) ,
+				$("<tr />")
+					.append($("<td id='updateno' style='display: none;'>"))))) 
 		}	
+		
+		inputform() ;
 		
 		// 등록버튼 function
 		function input() {
@@ -152,9 +158,11 @@
 		}
 		
 		// 변경 function
-		function change(rowid) {
+		function change() {
 			
-			let id = rowid ;
+			let id = $("#updateno").html() ;
+			console.log($("#updateno").html()) ;
+			
 			let content = $("#updateinput").val() ;
 			
 			$.ajax({
@@ -167,6 +175,7 @@
 				dataType : "json" ,
 				success : function (result) {
 					console.log(result) ;
+					alert("수정 완료") ;
 					location.reload() ;
 				} ,
 				error : function (reject) {
@@ -185,6 +194,7 @@
 			
 			let name = memberID ;
 			let id = rowid ;
+			$("#updateno").html(id) ;
 			
 			// 본인글이면 수정가능
 			if ($("#"+rowid).attr("name") == memberID) {

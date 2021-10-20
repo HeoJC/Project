@@ -15,7 +15,7 @@ public class EpilogueDAO extends DAO{
 		
 		try {
 			stmt = conn.createStatement() ;
-			rs = stmt.executeQuery("select * from epilogue") ;
+			rs = stmt.executeQuery("select * from epilogue order by id") ;
 			while(rs.next()) {
 				Epilogue epilogue = new Epilogue() ;
 				epilogue.setId(rs.getString("id")) ;
