@@ -5,7 +5,7 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Contact - Mustache Enthusiast</title>
+	<title>productupload</title>
 	<link rel="shortcut icon" href="favicon.ico">
 	<link rel="icon" href="favicon.ico">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
@@ -16,6 +16,31 @@
 	<script src="js/top_bar.js"></script>
 </head>
 <script>
+
+	//범수씨가 만든 쿠키에서 정보 받아오는거
+	for (let cookies of cookieString) {
+		if (cookies.split("=")[0] == "memberID") {
+			memberID = cookies.split("=")[1];
+			console.log("로그인 아이디: " + memberID);
+		}
+		if (cookies.split("=")[0] == "memberName") {
+			memberName = cookies.split("=")[1];
+			console.log("이름: " + memberName);
+		}
+		if (cookies.split("=")[0] == "memberEMail") {
+			memberEMail = cookies.split("=")[1];
+			console.log("이메일: " + memberEMail);
+		}
+	}
+	
+	//관리자 로그인 없이 주소치고 들어오면 홈페이지로 돌아가도록 함
+	if (memberID == "admin") {
+		
+	} else {
+		alert("관리자 전용 페이지입니다.")
+		location.href="index.html"
+	}
+
 	function uploadButtonPressed(ev) {
 		console.log('등록버튼눌ㄹ미');
 		// let name = document.loginForm.name.value;
