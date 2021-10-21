@@ -11,64 +11,6 @@
    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
    <script src="./jquery-3.6.0.min.js"></script>
    <script src="js/top_bar.js"></script>
-   <style>
-      .make_heart {
-          margin: 0 auto;
-          width: 5px;
-          height: 5px;
-          background: white;
-          position: relative;
-          transform: rotate(45deg);
-      }
-
-      .make_heart:before,
-      .make_heart:after {
-          content: "";
-          width: 5px;
-          height: 5px;
-          position: absolute;
-          border-radius: 50%;
-          background: white;
-      }
-
-      .make_heart:before {
-          left: -57%;
-      }
-
-      .make_heart:after {
-          top: -57%;
-      }
-
-      .go {
-          transform: translate(0px, -100px) rotate(45deg) scale(10,10);;
-          transition-property: all;
-          transition-duration: .25s;
-          background: red;
-      }
-      .go::after,
-      .go::before{
-          background: red;
-      }
-      /* .go:before {
-          width: 100px;
-          height: 100px;
-      }
-      .go::after {
-          width: 100px;
-          height: 100px;
-      } */
-
-      .comeback {
-          transform: translate(0px, 0px) rotate(45deg);
-          transition-property: all;
-          /* transition-duration: 0s; */
-          background: white;
-      }
-      .comeback::after,
-      .comeback::before{
-          background: white;
-      }
-  </style>
 </head>
 
 <body>
@@ -76,7 +18,10 @@
       <div id="userInfo" style="display:none;"></div>
    </div>
    <div id="body">
-      <button onclick="go()">qqqqqqdd</button>
+ 	  <div id="please">
+ 	  <div id="make_heart"></div>
+     	 <!--<button onclick="go()">qqqqqqdd</button>-->
+      </div>
    </div>
 
    <script>
@@ -96,6 +41,10 @@
       // 좋아요
 
       function likeIt() {
+    	  if(memberID=='' || memberID==null){
+    		  alert('먼저 로그인 해주십시오.');
+    		  return;
+    	  }
          console.log("likeit function start) 로그인아이디:" + memberID + "상품아이디: " + id);
          let xhr = new XMLHttpRequest();
          xhr.open("post", "../LikeItServlet");
@@ -199,7 +148,7 @@
                .addClass("bi-cart-fill me-1")),
 
 
-               $('<div id="make_heart"/>')
+               //$('<div id="make_heart"/>')
 
                );
          return divRow;
